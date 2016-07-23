@@ -1,10 +1,8 @@
 ﻿---------------------------------------------------------------------------------------
--- NxCom - Communication code
--- Copyright 2007-2012 Carbon Based Creations, LLC
----------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------
 -- Carbonite - Addon for World of Warcraft(tm)
 -- Copyright 2007-2012 Carbon Based Creations, LLC
+--
+-- NxCom - Communication code
 --
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -20,15 +18,17 @@
 -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ---------------------------------------------------------------------------------------
 
+---------------------------------------------------------------------------------------
 -- Warning: "\" in send data can lead to invalid escape codes (ok, since only escaped if in literal string?)
 -- Bytes 35 (#) + 57 == 92 (\)
 --
 -- Byte 124 == |. Must be |c or creates invalid escape code. Not in addon channel, only chat
 -- Byte 128 or higher == invalid UTF-8 error. Not in addon channel, only chat
+---------------------------------------------------------------------------------------
 
--------------------------------------------------------------------------------
--------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 -- Com
+---------------------------------------------------------------------------------------
 
 local L = LibStub("AceLocale-3.0"):GetLocale("Carbonite")
 
@@ -46,7 +46,7 @@ function Nx.Com:Init()
 	if NxComOpts.Version < NxCOMOPTS_VERSION then
 
 		if NxComOpts.Version ~= 0 then
-			Nx.prt ("Com options reset (%f, %f)", NxComOpts.Version, NxComOptsDefaults.Version)
+			Nx.prt (L["Com options reset (%f, %f)"], NxComOpts.Version, NxComOptsDefaults.Version)
 		end
 
 		NxComOpts = NxComOptsDefaults
@@ -66,23 +66,23 @@ function Nx.Com:Init()
 
 	local sq = {}
 	self.SendQ = sq
-	sq[1] = {}						-- Channel
-	sq[2] = {}						-- Guild
-	sq[3] = {}						-- Friends
-	sq[4] = {}						-- Zone
+	sq[1] = {}				-- Channel
+	sq[2] = {}				-- Guild
+	sq[3] = {}				-- Friends
+	sq[4] = {}				-- Zone
 	self.SendQMode = 1
 
 	self.PalsInfo = {}			-- Friends and guildy info (position)
 	self.PalsSendQ = {}
 	self.PalNames = {}
 
-	self.MemberNames = {}		-- Names in party or raid
+	self.MemberNames = {}			-- Names in party or raid
 
 	self.Friends = {}
 	self.Punks = {}
 
-	self.ZPInfo = {}				-- Zone player info (position)
-	self.ZStatus = {}				-- Zones status. Indexed with map id
+	self.ZPInfo = {}			-- Zone player info (position)
+	self.ZStatus = {}			-- Zones status. Indexed with map id
 	self.ZMonitor = {}			-- Zones to monitor
 
 	self.SendChanQ = {}
@@ -111,20 +111,20 @@ function Nx.Com:Init()
 
 --[[
 	for n = 1, 25 do
-		Nx.Timer:Start ("ComTest"..n, 1 + n * .1, self, self.OnTestTimer)
+		Nx.Timer:Start (L["ComTest"]..n, 1 + n * .1, self, self.OnTestTimer)
 	end
 --]]
 
 	self.SentBytes = 0			-- Debugging
 	self.SentBytesSec = 0
 	self.SentBytesTime = GetTime()
-    ComBytesSec = Nx:ScheduleTimer(self.OnBytesSecTimer,1,self)
+	ComBytesSec = Nx:ScheduleTimer(self.OnBytesSecTimer,1,self)
 
 	hooksecurefunc ("SendChatMessage", self.SendChatHook)
 	Nx:RegisterComm(self.Name,Nx.Com.OnChat_msg_addon)
 end
 
---------
+---------------------------------------------------------------------------------------
 
 function Nx.Com:Test (a1, a2)
 
@@ -146,8 +146,9 @@ function Nx.Com:Test (a1, a2)
 --]]
 end
 
---------
+---------------------------------------------------------------------------------------
 --
+---------------------------------------------------------------------------------------
 
 function Nx.Com:OnTestTimer (name)
 
@@ -161,8 +162,9 @@ function Nx.Com:OnTestTimer (name)
 	return .1 + random() * 5 --15
 end
 
---------
+---------------------------------------------------------------------------------------
 --
+---------------------------------------------------------------------------------------
 
 function Nx.Com:OnBytesSecTimer (name)
 
@@ -176,8 +178,9 @@ function Nx.Com:OnBytesSecTimer (name)
 	return 1
 end
 
---------
+---------------------------------------------------------------------------------------
 -- On com event
+---------------------------------------------------------------------------------------
 
 function Nx.Com:OnEvent (event)
 	local self = Nx.Com
@@ -230,7 +233,7 @@ end
 
 function Nx.Com:OnLoginTimer()
 	local redeploy = 0
-	if UnitOnTaxi ("player") then		-- Detect login on taxi, which will not join channels until you land
+	if UnitOnTaxi ("player") then			-- Detect login on taxi, which will not join channels until you land
 
 		local id = GetChannelName (1)		-- Detect if reload
 		if id ~= 1 then
@@ -254,7 +257,7 @@ function Nx.Com:OnLoginTimer()
 	end
 
 	if IsControlKeyDown() and IsAltKeyDown() then
-		Nx.prt ("Disabling com functions!")
+		Nx.prt (L["Disabling com functions!"])
 		Nx.db.profile.Comm.Global = false
 		Nx.db.profile.Comm.Zone = false
 	end
@@ -290,8 +293,9 @@ function Nx.Com:OnLeaveATimer()
 	self:LeaveChan ("A")
 end
 
---------
+---------------------------------------------------------------------------------------
 -- We leveled
+---------------------------------------------------------------------------------------
 
 function Nx.Com:OnPlayer_level_up (event, arg1)
 
@@ -300,8 +304,9 @@ function Nx.Com:OnPlayer_level_up (event, arg1)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Friends list changed. Build list of connected non guild friends
+---------------------------------------------------------------------------------------
 
 function Nx.Com:OnFriendguild_update()
 
@@ -343,8 +348,9 @@ function Nx.Com:OnFriendguild_update()
 	self.PalNames = gNames
 end
 
---------
+---------------------------------------------------------------------------------------
 -- On com event
+---------------------------------------------------------------------------------------
 
 function Nx.Com:OnChatEvent (event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
 
@@ -362,7 +368,7 @@ function Nx.Com:OnChatEvent (event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, ar
 
 			self.List:AddInfo ("CN:"..arg9, format ("%s", arg1))
 
-			local nameRoot = Nx.Split ("I", arg9)	-- Drop I and #
+			local nameRoot = Nx.Split ("I", arg9)		-- Drop I and #
 
 			if arg1 == "YOU_JOINED" then
 
@@ -413,8 +419,9 @@ function Nx.Com:OnChatEvent (event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, ar
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- On channel message event
+---------------------------------------------------------------------------------------
 
 function Nx.Com:OnChat_msg_channel (event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
 
@@ -435,7 +442,7 @@ function Nx.Com:OnChat_msg_channel (event, arg1, arg2, arg3, arg4, arg5, arg6, a
 
 			if id == 83 then		-- S (status) Check 1st for performance
 
-				if not self.PalsInfo[name] then	-- Not a pal we have?
+				if not self.PalsInfo[name] then		-- Not a pal we have?
 					if #msg >= 16 then
 
 						local pl = self.ZPInfo[name]
@@ -455,8 +462,9 @@ function Nx.Com:OnChat_msg_channel (event, arg1, arg2, arg3, arg4, arg5, arg6, a
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- On addon message event
+---------------------------------------------------------------------------------------
 
 function Nx.Com:OnChat_msg_addon (args, distribution, target)
 
@@ -498,8 +506,9 @@ function Nx.Com:OnChat_msg_addon (args, distribution, target)
 		end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Parse a player status message
+---------------------------------------------------------------------------------------
 
 function Nx.Com:ParsePlyrStatus (name, info, msg)
 
@@ -516,11 +525,11 @@ function Nx.Com:ParsePlyrStatus (name, info, msg)
 
 	-- Player info
 
-	local mapId = tonumber (strsub (msg, 3, 6), 16)	-- Map id
+	local mapId = tonumber (strsub (msg, 3, 6), 16)		-- Map id
 
 	local winfo = Nx.Map.MapWorldInfo[mapId]
 	if not winfo then
-		info.T = 0			-- Cause it to die
+		info.T = 0					-- Cause it to die
 --		Nx.prt ("Die %s", mapId)
 		return
 	end
@@ -593,7 +602,7 @@ function Nx.Com:ParsePlyrStatus (name, info, msg)
 	if bit.band (flags, 4) > 0 then
 		Nx.qTEMPinfo = info
 		Nx.qTEMPmsg = strsub(msg,off)
-        Nx.qTEMPname = name
+	Nx.qTEMPname = name
 		if Nx.qTEMPinfo and Nx.qTEMPmsg and Nx.qTEMPname then
 --			Nx:SendCommMessage("carbmodule","QUEST_DECODE","WHISPER",UnitName("player"),"BULK")
 			Nx.ModQAction = "QUEST_DECODE"
@@ -618,12 +627,13 @@ function Nx.Com:ParsePlyrStatus (name, info, msg)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Parse Cartographer LibGuildPositions
+---------------------------------------------------------------------------------------
 
 function Nx.Com:ParseLGP (name, msg)
 
-	if strbyte (msg) == 0x50 then	-- P (position)
+	if strbyte (msg) == 0x50 then		-- P (position)
 
 		local x, x2, y, y2, len = strbyte (msg, 2, 6)
 
@@ -658,8 +668,9 @@ function Nx.Com:ParseLGP (name, msg)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Update channels
+---------------------------------------------------------------------------------------
 
 function Nx.Com:UpdateChannels()
 	ComUC = Nx:ScheduleTimer(self.UpdateChannelsTimer,0,self)
@@ -739,12 +750,13 @@ function Nx.Com:UpdateChannelsTimer()
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Join a channel
+---------------------------------------------------------------------------------------
 
 function Nx.Com:JoinChan (chanId)
 
-	if chanId == "A" then	-- Addon channel (global)
+	if chanId == "A" then		-- Addon channel (global)
 
 		if Nx.db.profile.Comm.Global then
 
@@ -766,7 +778,7 @@ function Nx.Com:JoinChan (chanId)
 			end
 		end
 	else
-		Nx.prt ("JoinChan Err %s", chanId)
+		Nx.prt (L["JoinChan Err %s"], chanId)
 
 	end
 end
@@ -814,8 +826,9 @@ function Nx.Com:OnJoinChanZTimer ()
 	return 3
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Count channels being used
+---------------------------------------------------------------------------------------
 
 function Nx.Com:GetChanCount()
 
@@ -831,8 +844,9 @@ function Nx.Com:GetChanCount()
 	return chanCnt
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Leave a channel
+---------------------------------------------------------------------------------------
 
 function Nx.Com:LeaveChan (chanId)
 
@@ -847,8 +861,9 @@ function Nx.Com:LeaveChan (chanId)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Leave a type of channel
+---------------------------------------------------------------------------------------
 
 function Nx.Com:LeaveChans (typeName)
 
@@ -884,8 +899,9 @@ function Nx.Com:LeaveChans (typeName)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Scan channels and add missing to status
+---------------------------------------------------------------------------------------
 
 function Nx.Com:ScanChans()
 
@@ -916,8 +932,9 @@ function Nx.Com:ScanChans()
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Check if in a type of channel
+---------------------------------------------------------------------------------------
 
 function Nx.Com:InChanType (typeName)
 
@@ -939,8 +956,9 @@ function Nx.Com:InChanType (typeName)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Check if in a named channel
+---------------------------------------------------------------------------------------
 
 function Nx.Com:InChan (chanName)
 
@@ -953,15 +971,17 @@ function Nx.Com:InChan (chanName)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Set send pals mask. Called by options init. Don't do stuff needing com init
+---------------------------------------------------------------------------------------
 
 function Nx.Com:SetSendPalsMask (mask)
 	self.SendPMask = mask
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Send message to pals
+---------------------------------------------------------------------------------------
 
 function Nx.Com:SendPals (msg)
 
@@ -970,8 +990,9 @@ function Nx.Com:SendPals (msg)
 	self.PalsSendQ[#self.PalsSendQ + 1] = msg
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Send a secure message to the global addon named channel
+---------------------------------------------------------------------------------------
 
 function Nx.Com:SendSecG (pre, msg)
 
@@ -987,13 +1008,14 @@ function Nx.Com:SendSecG (pre, msg)
 
 			self:SendChan (num, str)
 		else
-			Nx.prt ("SendSecG Error: %s", pre)
+			Nx.prt (L["SendSecG Error: %s"], pre)
 		end
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Send a secure message to player using addon whisper
+---------------------------------------------------------------------------------------
 
 function Nx.Com:SendSecW (pre, msg, plName)
 
@@ -1005,14 +1027,15 @@ function Nx.Com:SendSecW (pre, msg, plName)
 	Nx:SendCommMessage (self.Name, str, "WHISPER", plName)
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Send a message to a named channel
+---------------------------------------------------------------------------------------
 
 function Nx.Com:Send (chanId, msg, plName)
 
 	assert (msg)
 
-	if chanId == "Z" then	-- Zone chat channel
+	if chanId == "Z" then		-- Zone chat channel
 
 		local mapId = Nx.Map:GetRealMapId()
 		local chanName = self.ZStatus[mapId] and self.ZStatus[mapId].ChanName
@@ -1029,7 +1052,7 @@ function Nx.Com:Send (chanId, msg, plName)
 
 		self.SentBytes = self.SentBytes + #msg + 54 + 20	-- Packet overhead + some WOW overhead
 
-		if chanId == "g" then	-- Addon guild
+		if chanId == "g" then		-- Addon guild
 
 			if IsInGuild() then
 				Nx:SendCommMessage (self.Name, msg, "GUILD")
@@ -1062,8 +1085,9 @@ function Nx.Com:Send (chanId, msg, plName)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Send a message to a numbered chat channel using a buffer
+---------------------------------------------------------------------------------------
 
 function Nx.Com:SendChan (num, msg)
 
@@ -1073,8 +1097,9 @@ function Nx.Com:SendChan (num, msg)
 	tinsert (self.SendChanQ, data)
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Send chat hook
+---------------------------------------------------------------------------------------
 
 function Nx.Com.SendChatHook (msg, chanName)
 
@@ -1085,8 +1110,9 @@ function Nx.Com.SendChatHook (msg, chanName)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Calc a message checksum
+---------------------------------------------------------------------------------------
 
 function Nx.Com:Chksum (msg)
 
@@ -1121,8 +1147,9 @@ function Nx.Com:IsChksumOK (msg)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Encode a message
+---------------------------------------------------------------------------------------
 
 function Nx.Com:Encode (msg)
 
@@ -1186,8 +1213,9 @@ function Nx.Com:SendChatMessageFixed (msg, typ, num)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Restore invalid chat characters
+---------------------------------------------------------------------------------------
 
 function Nx.Com:RestoreChars (msg)
 
@@ -1200,8 +1228,9 @@ function Nx.Com:RestoreChars (msg)
 	return msg
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Monitor a zone
+---------------------------------------------------------------------------------------
 
 function Nx.Com:MonitorZone (mapId, enable)
 
@@ -1222,9 +1251,9 @@ function Nx.Com:MonitorZone (mapId, enable)
 				if mode >= 0 then
 					local zs = self.ZStatus[mapId]
 					if zs and zs.ChanName then
-						Nx.prt (" %s", Nx.MapIdToName[mapId])
+						Nx.prt (" %s", GetMapNameByID(mapId))
 					else
-						Nx.prt (" %s (pending)", Nx.MapIdToName[mapId])
+						Nx.prt (" %s (pending)", GetMapNameByID(mapId))
 					end
 				end
 			end
@@ -1242,8 +1271,10 @@ function Nx.Com:IsZoneMonitored (mapId)
 	local i = self.ZMonitor[mapId]
 	return i and i >= 0
 end
---------
+
+---------------------------------------------------------------------------------------
 -- Frame update. Called by main addon frame
+---------------------------------------------------------------------------------------
 
 function Nx.Com:OnUpdate (elapsed)
 	if not Nx.Com.Initialized then
@@ -1302,7 +1333,7 @@ function Nx.Com:OnUpdate (elapsed)
 		delay = 120
 	end
 
-	if next (self.Punks) then	-- Have a punk? Override all times
+	if next (self.Punks) then		-- Have a punk? Override all times
 		delay = min (6, delay)
 	end
 
@@ -1376,7 +1407,7 @@ function Nx.Com:OnUpdate (elapsed)
 
 			local tLvl = min (UnitLevel ("target"), 90)	-- 93 or above makes 0x80+ illegal chat char
 --			Nx.prt ("%s", tLvl)
-			local _, tCls = UnitClass ("target")	-- Non localized uppercase version
+			local _, tCls = UnitClass ("target")		-- Non localized uppercase version
 			tCls = self.ClassNames[tCls] or 0
 
 			local h = UnitHealth ("target")
@@ -1385,7 +1416,7 @@ function Nx.Com:OnUpdate (elapsed)
 			end
 			local hm = max (UnitHealthMax ("target"), 1)
 			local hper = h / hm * 20
-			if hper > 0 then			-- Alive?
+			if hper > 0 then				-- Alive?
 				hper = max (hper, 1)
 			end
 			hper = min (floor (hper + .5), 20)
@@ -1464,6 +1495,8 @@ function Nx.Com:OnUpdate (elapsed)
 
 		if msg then
 
+			ShowFriends()		-- force Friend List Update
+
 			self.PosSendNext = self.PosSendNext + 1
 
 			if self.PosSendNext > #self.Friends then
@@ -1487,7 +1520,7 @@ function Nx.Com:OnUpdate (elapsed)
 
 						if bit.band (self.SendPMask, 4) > 0 then
 
-							local sk = self.SendZSkip - 1		-- Zone skipped to reduce rate
+							local sk = self.SendZSkip - 1			-- Zone skipped to reduce rate
 
 							if sk < 1 then
 								sk = 4
@@ -1546,8 +1579,9 @@ function Nx.Com:OnUpdate (elapsed)
 --]]
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Update map icons (called by map)
+---------------------------------------------------------------------------------------
 
 function Nx.Com:UpdateIcons (map)
 
@@ -1623,13 +1657,13 @@ function Nx.Com:UpdateIcons (map)
 	return self.TrackName, self.TrackX, self.TrackY
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Update icons
+---------------------------------------------------------------------------------------
 
 function Nx.Com:UpdatePlyrIcons (info, map, iconName)
 
 	local memberNames = self.MemberNames
-	local idToName = Nx.MapIdToName
 	local alt = IsAltKeyDown()
 	local redGlow = abs (GetTime() * 400 % 200 - 100) / 200 + .5
 	local inBG = Nx.InBG
@@ -1671,7 +1705,10 @@ function Nx.Com:UpdatePlyrIcons (info, map, iconName)
 				f.NXType = 1000
 				f.NXData2 = name
 
-				local mapName = idToName[mapId] or "?"
+				local mapName = "?"
+				if mapId then
+					mapName = GetMapNameByID(mapId)
+				end
 				local tStr = pl.TStr or ""
 				local qStr = pl.QStr or ""
 				f.NxTip = format ("%s\n  %s (%d,%d)%s%s", pl.Tip, mapName, pl.X, pl.Y, tStr, qStr)
@@ -1682,7 +1719,7 @@ function Nx.Com:UpdatePlyrIcons (info, map, iconName)
 					txName = "IconPlyrF"
 				end
 
-				if bit.band (pl.F, 1) > 0 then	-- In combat?
+				if bit.band (pl.F, 1) > 0 then		-- In combat?
 					txName = txName .. "C"
 				end
 
@@ -1760,24 +1797,28 @@ function Nx.Com:GetPlyrQStr (name)
 	return info and info.QStr
 end
 
--------------------------------------------------------------------------------
--------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 -- Com message list
+---------------------------------------------------------------------------------------
 
---------
+---------------------------------------------------------------------------------------
 -- Open and init or toggle Com frame
+---------------------------------------------------------------------------------------
 
 function Nx.Com.List:Open()
 end
 
-------
+---------------------------------------------------------------------------------------
 -- Add info to list
+---------------------------------------------------------------------------------------
 
 function Nx.Com.List:AddInfo (type, name)
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Update list
+---------------------------------------------------------------------------------------
 
 function Nx.Com.List:Update()
 
@@ -1787,7 +1828,7 @@ function Nx.Com.List:Update()
 
 	-- Title
 
-	self.Win:SetTitle (format ("Com %d Bytes sec %d", #self.Sorted, Nx.Com.SentBytesSec or 0))
+	self.Win:SetTitle (format (L["Com %d Bytes sec %d"], #self.Sorted, Nx.Com.SentBytesSec or 0))
 
 	-- List
 
@@ -1808,14 +1849,15 @@ function Nx.Com.List:Update()
 	list:Update (isLast)
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Sort compare
+---------------------------------------------------------------------------------------
 
 function Nx.Com.List.SortCmp (v1, v2)
 	return v1.Time < v2.Time
 end
 
---------
+---------------------------------------------------------------------------------------
 
 function Nx.Com.List:Sort()
 
@@ -1833,7 +1875,5 @@ function Nx.Com.List:Sort()
 	sort (self.Sorted, self.SortCmp)
 end
 
-
-
--------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 --EOF

@@ -1,4 +1,4 @@
-local L = LibStub("AceLocale-3.0"):NewLocale("Carbonite", "enUS", true)
+﻿local L = LibStub("AceLocale-3.0"):NewLocale("Carbonite", "enUS", true, true)
 if not L then return end
 
 L["Acherus: The Ebon Hold"] = true
@@ -9,14 +9,13 @@ L["Altar of Sha'tar, Shadowmoon Valley"] = true
 L["Amber Ledge, Borean Tundra"] = true
 L["Amberpine Lodge, Grizzly Hills"] = true
 L["Andorhal, Western Plaguelands"] = true
-L["Andorhal, Western Plaguelands"] = true
 L["Apothecary Camp, Howling Fjord"] = true
 L["Area 52, Netherstorm"] = true
 L["Argent Tournament Grounds, Icecrown"] = true
 L["Astranaar, Ashenvale"] = true
 L["Azure Watch, Azuremyst Isle"] = true
 L["Bambala, Stranglethorn"] = true
-L["Beeble's Wreck, Isle Of Giants"] = true
+L["Beeble's Wreck, Isle of Giants"] = true
 L["Bilgewater Harbor, Azshara"] = true
 L["Binan Village, Kun-Lai Summit"] = true
 L["Blackfathom Camp, Ashenvale"] = true
@@ -29,7 +28,7 @@ L["Bootlegger Outpost, Tanaris"] = true
 L["Booty Bay, Stranglethorn"] = true
 L["Bor'gorok Outpost, Borean Tundra"] = true
 L["Bouldercrag's Refuge, The Storm Peaks"] = true
-L["Bozzle's Wreck, Isle Of Giants"] = true
+L["Bozzle's Wreck, Isle of Giants"] = true
 L["Brackenwall Village, Dustwallow Marsh"] = true
 L["Brill, Tirisfal Glades"] = true
 L["Camp Ataya, Feralas"] = true
@@ -38,7 +37,6 @@ L["Camp Mojache, Feralas"] = true
 L["Camp Oneqwah, Grizzly Hills"] = true
 L["Camp Tunka'lo, The Storm Peaks"] = true
 L["Camp Winterhoof, Howling Fjord"] = true
-L["Cenarion Hold, Silithus"] = true
 L["Cenarion Hold, Silithus"] = true
 L["Chillwind Camp, Western Plaguelands"] = true
 L["Chiselgrip, Burning Steppes"] = true
@@ -120,7 +118,7 @@ L["Halfhill, Valley of the Four Winds"] = true
 L["Hammerfall, Arathi"] = true
 L["Hardwrench Hideaway, Stranglethorn"] = true
 L["Hearthglen, Western Plaguelands"] = true
-L["Hellfire Peninsula, The Dark Portal"] = true
+L["The Dark Portal, Hellfire Peninsula"] = true
 L["Hellscream's Fist, Kun-Lai Summit"] = true
 L["Hellscream's Watch, Ashenvale"] = true
 L["Highbank, Twilight Highlands"] = true
@@ -324,3 +322,136 @@ L["Zim'Torga, Zul'Drak"] = true
 L["Zoram'gar Outpost, Ashenvale"] = true
 L["Zouchin Village, Kun-Lai Summit"] = true
 L["Zul'Aman, Ghostlands"] = true
+-- WOD Flightmasters
+-- Ashran
+L["Stormshield, Ashran"] = true
+L["Warspear, Ashran"] = true
+--Frostfire Ridge
+L["Bloodmaul Slag Mines, Frostfire Ridge"] = true
+L["Iron Siegeworks, Frostfire Ridge"] = true
+L["Bladespire Fortress, Frostfire Ridge"] = true
+L["Darkspear's Edge, Frostfire Ridge"] = true
+L["Frostwall Garrison, Frostfire Ridge"] = true		-- H Garrison subzone
+L["Stonefang Outpost, Frostfire Ridge"] = true
+L["Throm'Var, Frostfire Ridge"] = true
+L["Thunder Pass, Frostfire Ridge"] = true
+L["Wolf's Stand, Frostfire Ridge"] = true
+L["Wor'gol, Frostfire Ridge"] = true
+--Gorgrond
+L["Breaker's Crown, Gorgrond"] = true
+L["Everbloom Overlook, Gorgrond"] = true
+L["Everbloom Wilds, Gorgrond"] = true
+L["Iron Docks, Gorgrond"] = true
+L["Skysea Point, Gorgrond"] = true
+L["Bastion Rise, Gorgrond"] = true
+L["Deeproot, Gorgrond"] = true
+L["Highpass, Gorgrond"] = true
+L["Wildwood Wash, Gorgrond"] = true
+L["Bastion Rise, Gorgrond"] = true
+L["Beastwatch, Gorgrond"] = true
+L["Evermorn Springs, Gorgrond"] = true
+--Nagrand (WOD)
+L["Joz's Rylaks, Nagrand"] = true
+L["Nivek's Overlook, Nagrand"] = true
+L["Rilzit's Holdfast, Nagrand"] = true
+L["The Ring of Trials, Nagrand"] = true
+L["Throne of the Elements, Nagrand"] = true
+L["Telaari Station, Nagrand"] = true
+L["Yrel's Watch, Nagrand"] = true
+L["Riverside Post, Nagrand"] = true
+L["Wor'var, Nagrand"] = true
+--Shadowmoon Valley
+L["Darktide Roost, Shadowmoon Valley"] = true
+L["Exile's Rise, Shadowmoon Valley"] = true
+L["Socrethar's Rise, Shadowmoon Valley"] = true
+L["Elodor, Shadowmoon Valley"] = true
+L["Embaari Village, Shadowmoon Valley"] = true
+L["Lunarfall, Shadowmoon Valley"] = true		-- A Garrison Subzone
+L["Path of Light, Shadowmoon Valley"] = true
+L["The Draakorium, Shadowmoon Valley"] = true
+L["Tranquil Court, Shadowmoon Valley"] = true
+L["Twilight Glade, Shadowmoon Valley"] = true
+--Spires of Arak
+L["Akeeta's Hovel, Shadowmoon Valley"] = true		-- is in Spires of Arak but Shadowmoon Valley named
+L["Apexis Excavation, Spires of Arak"] = true
+L["Crow's Crook, Spires of Arak"] = true
+L["Pinchwhistle Gearworks, Spires of Arak"] = true
+L["Talon Watch, Spires of Arak"] = true
+L["Veil Terokk, Spires of Arak"] = true
+L["Southport, Spires of Arak"] = true
+L["Axefall, Spires of Arak"] = true
+--Talador
+L["Retribution Point, Talador"] = true
+L["Shattrath City, Talador"] = true
+L["Terokkar Refuge, Talador"] = true
+L["Zangarra, Talador"] = true
+L["Anchorite's Sojourn, Talador"] = true
+L["Exarch's Refuge, Talador"] = true
+L["Fort Wrynn, Talador"] = true
+L["Redemption Rise, Talador"] = true
+L["Durotan's Grasp, Talador"] = true
+L["Frostwolf Overlook, Talador"] = true
+L["Vol'jin's Pride, Talador"] = true
+-- Translation for Flight_LOC
+L["Alliance Flight"] = true
+L["Horde Flight"] = true
+L["Neutral Flight"] = true
+
+--WARNING : wod entries validate and test it online on an English server BEFORE sorting and
+--placed in alphabetical order in the file enUS thank you
+-- Commented out for now until they can be looked at.
+--[[
+L["Shattered Landing, Blasted Lands"] = true --72.8, 48.6 (H) pr\195\169 alpha carbonite wod NPC Ameri Windblade
+L["Shattered Beachhead, Blasted Lands"] = true -- 67.4, 28.0 (A) pr\195\169 alpha carbonite wod NPC Araazi
+L["Unknown location, Gorgrond"] = true --57.0, 45.8 (A+H) pr\195\169 alpha carbonite wod NPC Arcanist Windlebop
+L["Socrethars rise, Shadowmoon Valley"] = true --43.8, 77.4 (A) pr\195\169 alpha carbonite wod NPC Azara Goldenwing
+L["Darktide roost, Shadowmoon Valley"] = true --59.8, 81.4 (N) pr\195\169 alpha carbonite wod NPC Beasttamer Ladaak
+L["Auchindoun, Talador"] = true --42.0, 76.8 (A+H) pr\195\169 alpha carbonite wod NPC Beldos
+L["Iron siegeworks, Frostfire Ridge"] = true --83.6, 60.8 (H) pr\195\169 alpha carbonite wod NPC Bile Warneck
+L["The cracking plains, Frostfire Ridge"] = true --51.4, 21.4 (A+H) pr\195\169 alpha carbonite wod NPC Brenna Skymoor
+L["Frostwall"] = true --45.8, 50.6 (H) pr\195\169 alpha carbonite wod NPC Bron Skyhorn
+L["Unknown location, Gorgrond"] = true --41.2, 87.2 (H) pr\195\169 alpha carbonite wod NPC Chucklespine
+L["Zangarra, Talador"] = true --80.4, 25.4 (A+H) pr\195\169 alpha carbonite wod NPC Dominic Arlington
+L["Embaari village, Shadowmon Valley"] = true --45.6, 38.8 (A) pr\195\169 alpha carbonite wod NPC Eonor
+L["Stormshield, Ashran"] = true --30.8, 48.8 pr\195\169 alpha carbonite wod NPC Ernst ten Bosch
+L["Unknown location, Gorgrond"] = true --39.6, 36.6 (A+H) pr\195\169 alpha carbonite wod NPC Faronn Dustwalker
+L["Southport, Spires of Arak"] = true --39.0, 61.8 (A) pr\195\169 alpha carbonite wod NPC Firn Swiftbreeze
+L["The burial fields, Shadowmoon Valley"] = true --40.6, 55.2 (A) pr\195\169 alpha carbonite wod NPC Gotuun
+L["Beastwatch, Gorgrond"] = true --46.0, 69.2 (H) pr\195\169 alpha carbonite wod NPC Grinslicer
+L["Axefall, spires of Arak"] = true --39.6, 43.2 (H) pr\195\169 alpha carbonite wod NPC Hutou Featherwind
+L["Warspear, Ashran"] = true --44.6, 34.2 (H) pr\195\169 alpha carbonite wod NPC Ilalu
+L["Temple of Karabor, Shadowmoon Valley"] = true --70.4, 50.4 (A) pr\195\169 alpha carbonite wod NPC Itara
+L["The cracking plains, Frostfire Ridge"] = true --51.8, 41.0 (H) pr\195\169 alpha carbonite wod NPC Ja'kana
+L["Unknown location, Frostfire Ridge"] = true --31.8, 9.6 (H) pr\195\169 alpha carbonite wod NPC Jonnock Hewndawn
+L["Pinchwhistle Gearworks, Spires of Arak"] = true --60.8, 73.2 (A+H) pr\195\169 alpha carbonite wod NPC Kwiven Quickcog
+L["Vol'jin s Pride, Talador"] = true --70.8, 29.4 (H) pr\195\169 alpha carbonite wod NPC Mo'jimba
+L["Orunai coast, Talador"] = true --61.4, 10.6 (H) pr\195\169 alpha carbonite wod NPC Mok'ra
+L["The shimmer moor, Shadowmoon Valley"] = true --57.0, 56.6 (A) pr\195\169 alpha carbonite wod NPC Morfax
+L["Auchindoun, Talador"] = true --54.8, 68.8 (A+H) pr\195\169 alpha carbonite wod NPC Niaa
+L["Gronn Canyon, Gorgrond"] = true --45.8, 55.0 (A+H) pr\195\169 alpha carbonite wod NPC Nisha
+L["Unknown location, Talador"] = true --63.2, 25.8 (A+H) pr\195\169 alpha carbonite wod NPC Nomaeaa
+L["Unknown location, Shadowmoon Valley"] = true --59.4, 46.0 (A) pr\195\169 alpha carbonite wod NPC Paaya
+L["Wor'Gol, Frostfire Ridge"] = true --21.6, 56.0 (H) pr\195\169 alpha carbonite wod NPC Pul Windcarver
+L["Evermorn Springs, Gorgrond"] = true --46.4, 76.6 (A) pr\195\169 alpha carbonite wod NPC Rangari Nogo
+L["Highpass, Gorgrond"] = true --52.8, 59.4 (A) pr\195\169 alpha carbonite wod NPC Rangari Rajess
+L["Tangleheart, Gorgrond"] = true --64.0, 57.4 (A) pr\195\169 alpha carbonite wod NPC Rangari Thewe
+L["Iron siege works, Gorgrond"] = true --87.4, 62.6 (A) pr\195\169 alpha carbonite wod NPC Rangari Veera
+L["Bastion Rise, Gorgrond"] = true --46.4, 92.4 (A) pr\195\169 alpha carbonite wod NPC Rangari Yaval
+L["Bladespire Fortress, Frostfire Ridge"] = true --24.4, 37.2 (H) pr\195\169 alpha carbonite wod NPC Roark the airwolf
+L["Auchindoun, Talador"] = true --54.6, 67.8 (H) pr\195\169 alpha carbonite wod NPC Roka
+L["Stormshield, Ashran"] = true --46.6, 73.8 (H) pr\195\169 alpha carbonite wod NPC Shevan Manille
+L["Fort Wrynn, Talador"] = true --69.8,21.4 (A) pr\195\169 alpha carbonite wod NPC Skyguard Amelia
+L["Stonefang Outpost, Frostfire Ridge"] = true --40.0, 51.8 (H) pr\195\169 alpha carbonite wod NPC Skyhunter Donmor'gan
+L["Unknown location, Talador"] = true --70.4, 57.0 (A+H) pr\195\169 alpha carbonite wod NPC Skytalon Inuz
+L["Sethekk Hollow, Spires of Arak"] = true --61.8, 43.6 (A+H) pr\195\169 alpha carbonite wod NPC Skytalon Karaz
+L["Veil Akraz, Spires of Arak"] = true --37.0, 24.6 (A+H) pr\195\169 alpha carbonite wod NPC Skytalon Kuris
+L["Unknown location, Spires of Arak"] = true --46.2, 44.0 (A+H) pr\195\169 alpha carbonite wod NPC Skytalon Meshaal
+L["Unknown location, Talador"] = true --55.4, 40.8 (H) pr\195\169 alpha carbonite wod NPC Tega Skyblade
+L["Warspear, Ashran"] --48.4, 29.2 (A) pr\195\169 alpha carbonite wod NPC tina Kelatra
+L["Elodor, Shadowmoon Valley"] = true --58.6, 31.8 (A) pr\195\169 alpha carbonite wod NPC Vamuun
+L["Gloomshade Grove, Shadowmoon Valley"] = true --45.6, 25.4 (A+H) pr\195\169 alpha carbonite wod NPC Wargra
+L["The cracking plains, Frostfire Ridge"] = true --73.6, 60.0 (H) pr\195\169 alpha carbonite wod NPC Windhunter
+L["Bastion Rise, Gorgrond"] = true --47.4, 90.8 pr\195\169 alpha carbonite wod NPC Windscreamer
+L["Unknown location, Talador"] = true --80.0, 56.6 (A) pr\195\169 alpha carbonite wod NPC Zaari
+L["Unknown location, Talador"] = true --51.2, 42.6 (A+H) pr\195\169 alpha carbonite wod NPC Zamara
+]]--

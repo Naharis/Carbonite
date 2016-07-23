@@ -20,13 +20,11 @@
 -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ---------------------------------------------------------------------------------------
 
--------------------------------------------------------------------------------
--------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 -- Tables
+---------------------------------------------------------------------------------------
 
--------------------------------------------------------------------------------
-
---------
 local L = LibStub("AceLocale-3.0"):GetLocale("Carbonite")
 
 function Nx.Travel:Init()
@@ -34,7 +32,7 @@ function Nx.Travel:Init()
 	TakeTaxiNode = self.TakeTaxiNode		-- Hook it
 
 	local tr = {}
-	for n = 1, 6 do
+	for n = 1, 7 do
 		tr[n] = {}
 	end
 	self.Travel = tr
@@ -65,12 +63,6 @@ function Nx.Travel:Add (typ)
 					local fac,name,locName,zone,x,y = Nx.Split("|",Nx.NPCData[tonumber(num)])
 					fac,zone,x,y = tonumber(fac),tonumber(zone),tonumber(x),tonumber(y)
 					local _, _, _, _, cont, _, _ = Nx.Split ("|", Nx.Zones[tonumber(zone)])
-					if cont == "7" then
-						cont = 4
-					end
-					if cont == "8" then
-						cont = 5
-					end
 					local tdata = self.Travel[tonumber(cont)]
 					if fac ~= hideFac then
 						local mapId = zone
@@ -89,8 +81,9 @@ function Nx.Travel:Add (typ)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Taxi Map open event
+---------------------------------------------------------------------------------------
 
 function Nx.Travel.OnTaximap_opened()
 
@@ -101,8 +94,9 @@ function Nx.Travel.OnTaximap_opened()
 	self:CaptureTaxi()
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Record taxi locations we can use
+---------------------------------------------------------------------------------------
 
 function Nx.Travel:CaptureTaxi()
 
@@ -129,8 +123,9 @@ function Nx.Travel:CaptureTaxi()
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Hook for Taxi use
+---------------------------------------------------------------------------------------
 
 function Nx.Travel.TakeTaxiNode (node)
 
@@ -161,8 +156,9 @@ function Nx.Travel.TakeTaxiNode (node)
 	Nx.Travel.OrigTakeTaxiNode (node)
 end
 
---------
+---------------------------------------------------------------------------------------
 --
+---------------------------------------------------------------------------------------
 
 function Nx.Travel:TaxiCalcTime (dest)
 
@@ -232,8 +228,9 @@ function Nx.Travel:TaxiCalcTime (dest)
 	return tm
 end
 
---------
+---------------------------------------------------------------------------------------
 --
+---------------------------------------------------------------------------------------
 
 function Nx.Travel:TaxiFindNodeFromRouteXY (x, y)
 
@@ -326,8 +323,9 @@ function Nx.Travel:TaxiTimer()
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Called by map to save flight time
+---------------------------------------------------------------------------------------
 
 function Nx.Travel:TaxiSaveTime (tm)
 
@@ -338,11 +336,11 @@ function Nx.Travel:TaxiSaveTime (tm)
 	end
 end
 
--------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 
---------
+---------------------------------------------------------------------------------------
 -- Make shortest path
---
+---------------------------------------------------------------------------------------
 -- Straight line (flight master can shorten)
 -- zone connection (FM can shorten)
 --
@@ -367,6 +365,7 @@ end
 --  *        .CC.F--         *
 --  *          *             *
 --  ************************
+---------------------------------------------------------------------------------------
 
 function Nx.Travel:MakePath (tracking, srcMapId, srcX, srcY, dstMapId, dstX, dstY, targetType)
 	if not Nx.db.profile.Map.RouteUse then
@@ -416,8 +415,8 @@ function Nx.Travel:MakePath (tracking, srcMapId, srcX, srcY, dstMapId, dstX, dst
 
 		elseif cont1 == 4 then
 			self.FlyingMount = GetSpellInfo (self.ColdFlyName)
-        elseif cont1 == 6 then
-            self.FlyingMount = IsSpellKnown(self.FlySkillPandaria)
+		elseif cont1 == 6 then
+			self.FlyingMount = IsSpellKnown(self.FlySkillPandaria)
 
 		end
 	end
@@ -440,10 +439,10 @@ function Nx.Travel:MakePath (tracking, srcMapId, srcX, srcY, dstMapId, dstX, dst
 	if cont1 == cont2 then
 
 --		if srcMapId == 4003 or dstMapId == 4003 then		-- Dalaran?
---			return													-- Do a straight line
+--			return						-- Do a straight line
 --		end
 
-		if riding >= 300 and self.FlyingMount then	-- Epic flyer in flying area, don't route
+		if riding >= 300 and self.FlyingMount then		-- Epic flyer in flying area, don't route
 			return
 		end
 
@@ -501,11 +500,11 @@ function Nx.Travel:MakePath (tracking, srcMapId, srcX, srcY, dstMapId, dstX, dst
 
 --								Nx.prt ("Ang %s %s = %s", ang1, ang2, ang)
 
-								if con.StartMapId ~= node1.MapId then	-- Open connection caused us to switch zones? No split
+								if con.StartMapId ~= node1.MapId then		-- Open connection caused us to switch zones? No split
 									node1.NoSplit = true
 								end
 
-								local name = format ("Connection: %s to %s", Nx.MapIdToName[con.StartMapId], Nx.MapIdToName[con.EndMapId])
+								local name = format (L["Connection: %s to %s"], GetMapNameByID(con.StartMapId), GetMapNameByID(con.EndMapId))
 
 								local node = {}
 								node.NoSplit = true
@@ -653,7 +652,7 @@ function Nx.Travel:FindFlight (srcMapId, srcX, srcY, dstMapId, dstX, dstY)
 
 		local path = {}
 
-		local name = format ("Fly: %s to %s", gsub (t1Node.Name, ".+!", ""), gsub (bt2Node.Name, ".+!", ""))
+		local name = format (L["Fly: %s to %s"], gsub (t1Node.Name, ".+!", ""), gsub (bt2Node.Name, ".+!", ""))
 --		local name = format ("Fly: %s to %s", t1Node.Name, bt2Node.Name)
 
 		local node1 = {}
@@ -679,9 +678,10 @@ function Nx.Travel:FindFlight (srcMapId, srcX, srcY, dstMapId, dstX, dstY)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Find closest
 -- (mapid, world x, world y)
+---------------------------------------------------------------------------------------
 
 function Nx.Travel:FindClosest (mapId, posX, posY)
 	local Map = Nx.Map
@@ -732,12 +732,13 @@ function Nx.Travel:FindClosest (mapId, posX, posY)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Find best connection
+---------------------------------------------------------------------------------------
 
 function Nx.Travel:FindConnection (srcMapId, srcX, srcY, dstMapId, dstX, dstY, skipIndirect)
 
-	if self.FlyingMount then		-- Can fly?
+	if self.FlyingMount then					-- Can fly?
 		return ((srcX - dstX) ^ 2 + (srcY - dstY) ^ 2) ^ .5	-- Use straight line distance
 	end
 
@@ -775,7 +776,7 @@ function Nx.Travel:FindConnection (srcMapId, srcX, srcY, dstMapId, dstX, dstY, s
 
 		return closeDist, closeCon
 
-	elseif not skipIndirect then	-- No direct connection
+	elseif not skipIndirect then		-- No direct connection
 
 		local closeCon
 		local closeDist = 9000111222333444
@@ -802,7 +803,7 @@ function Nx.Travel:FindConnection (srcMapId, srcX, srcY, dstMapId, dstX, dstY, s
 
 						local penalty = winfo[mapId].Connections[dstMapId] and 1 or 2
 
-						local d = dist1 + con.Dist + dist2 * penalty	-- Penalty for no direct connection
+						local d = dist1 + con.Dist + dist2 * penalty		-- Penalty for no direct connection
 
 						if d < closeDist then
 							closeDist = d
@@ -834,7 +835,7 @@ function Nx.Travel:FindConnection (srcMapId, srcX, srcY, dstMapId, dstX, dstY, s
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 
 function Nx.Travel:DebugCaptureTaxi()
 
@@ -906,5 +907,6 @@ function Nx.Travel:GetRidingSkill()
 	end
 	return SkillRiding
 end
--------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
 -- EOF

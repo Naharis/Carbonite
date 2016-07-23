@@ -1,4 +1,4 @@
-local L = LibStub("AceLocale-3.0"):NewLocale("Carbonite.Notes", "enUS", true)
+local L = LibStub("AceLocale-3.0"):NewLocale("Carbonite.Notes", "enUS", true, true)
 if not L then return end
 
 L["Note Options"] = true
@@ -35,3 +35,8 @@ L["Note"] = true
 L["Notes"] = true
 L["Note Addons"] = true
 L["My Notes"] = true
+
+L["Reset old notes data %f"] = true
+--Keybinds
+L["|cffc0c0ffCarbonite Notes|r"] = "|cffc0c0ffCarbonite Notes|r"
+L["NxTOGGLEFAV"] = "show/hide Notes"

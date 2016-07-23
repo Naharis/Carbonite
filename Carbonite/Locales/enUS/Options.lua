@@ -1,4 +1,4 @@
-local L = LibStub("AceLocale-3.0"):NewLocale("Carbonite", "enUS", true)
+local L = LibStub("AceLocale-3.0"):NewLocale("Carbonite", "enUS", true, true)
 if not L then return end
 
 -- Profiles Menu
@@ -27,7 +27,17 @@ L["Website"] = true
 L["For support, please visit the forums for Carbonite on WoW Interface."] = true
 L["Special thanks to"] = true
 L["Cirax for Carbonite2 Logo"] = true
-L["JimboBlue for guide location updates and checking"] = true
+L["ircdirk & atl77 for Quest Database updates"] = true
+L["Naharis for quest watchlist fixes"] = true
+L["nelegalno for many cleanups, api fixes"] = true
+L["JimJoBlue for guide location updates"] = true
+L["Localization Efforts By:"] = true
+L["frFR - powerstrk"] = true
+L["deDE - atl77 & samyonair"] = true
+L["itIT - ThorwaldOdin"] = true
+L["ruRU - NotDead"] = true
+L["zhCN - Raka-loah"] = true
+L["zhTW - kc305chen"] = true
 
 -- Battlegrounds Menu
 L["Battlegrounds"] = true
@@ -75,8 +85,6 @@ L["Restore map scale after track"] = true
 L["When enabled, restores your previous map scale when tracking is cleared."] = true
 L["Use Travel Routing"] = true
 L["When enabled, attempts to route your travel when destination is in another zone."] = true
-L["Restore map scale after track"] = true
-L["When enabled, restores your previous map scale when tracking is cleared."] = true
 L["Show Movement Trail"] = true
 L["When enabled, draws a trail on the map to show your movements."] = true
 L["Movement trail distance"] = true

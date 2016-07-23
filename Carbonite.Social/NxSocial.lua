@@ -20,8 +20,9 @@
 -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ---------------------------------------------------------------------------------------
 
---------
+---------------------------------------------------------------------------------------
 -- Init
+---------------------------------------------------------------------------------------
 
 local _G = getfenv(0)
 
@@ -71,20 +72,20 @@ local function socialConfig()
 	if not socialoptions then
 		socialoptions = {
 			type = "group",
-			name = "Social Options",
+			name = L["Social Options"],
 			childGroups	= "tab",
 			args = {
 				socialWin = {
 					type = "group",
-					name = "Social Options",
+					name = L["Social Options"],
 					order = 1,
 					args = {
 						socenable = {
 							order = 1,
 							type = "toggle",
 							width = "full",
-							name = "Enable the enhanced social window",
-							desc = "When enabled, Carbonite will use the enhanced social window instead of blizzards (REQUIRES RELOAD)",
+							name = L["Enable the enhanced social window"],
+							desc = L["When enabled, Carbonite will use the enhanced social window instead of blizzards (REQUIRES RELOAD)"],
 							get = function()
 								return Nx.scdb.profile.Social.SocialEnable
 							end,
@@ -97,15 +98,15 @@ local function socialConfig()
 				},
 				punkWin = {
 					type = "group",
-					name = "Punk Options",
+					name = L["Punk Options"],
 					order = 2,
 					args = {
 						pnkenable = {
 							order = 1,
 							type = "toggle",
 							width = "full",
-							name = "Enable the Punk System",
-							desc = "When enabled, Carbonite allows use of the Punk system (REQUIRES RELOAD)",
+							name = L["Enable the Punk System"],
+							desc = L["When enabled, Carbonite allows use of the Punk system (REQUIRES RELOAD)"],
 							get = function()
 								return Nx.scdb.profile.Social.PunkEnable
 							end,
@@ -124,8 +125,8 @@ local function socialConfig()
 							order = 3,
 							type = "toggle",
 							width = "full",
-							name = "Hide the Punk Window",
-							desc = "When enabled, Carbonite will hide the punk window",
+							name = L["Hide the Punk Window"],
+							desc = L["When enabled, Carbonite will hide the punk window"],
 							get = function()
 								return Nx.scdb.profile.Social.PunkTWinHide
 							end,
@@ -138,8 +139,8 @@ local function socialConfig()
 							order = 4,
 							type = "toggle",
 							width = "full",
-							name = "Lock the Punk Window",
-							desc = "When enabled, Carbonite will lock the punk window",
+							name = L["Lock the Punk Window"],
+							desc = L["When enabled, Carbonite will lock the punk window"],
 							get = function()
 								return Nx.scdb.profile.Social.PunkTWinLock
 							end,
@@ -152,7 +153,7 @@ local function socialConfig()
 							order = 5,
 							type = "input",
 							width = "full",
-							name = "Punk Window Title",
+							name = L["Punk Window Title"],
 							get = function()
 								return Nx.scdb.profile.Social.PunkTWinTitle
 							end,
@@ -164,8 +165,8 @@ local function socialConfig()
 						maxtargets = {
 							order = 6,
 							type = "range",
-							name = "Max punk target buttons",
-							desc = "Sets the number of punks that will show in the punk window. (REQUIRES RELOAD)",
+							name = L["Max punk target buttons"],
+							desc = L["Sets the number of punks that will show in the punk window. (REQUIRES RELOAD)"],
 							min = 0,
 							max = 15,
 							step = 1,
@@ -188,8 +189,8 @@ local function socialConfig()
 							order = 8,
 							type = "toggle",
 							width = "full",
-							name = "Show Others Punks Message",
-							desc = "When enabled, Carbonite will show a message on other users in the zone detecting punks",
+							name = L["Show Others Punks Message"],
+							desc = L["When enabled, Carbonite will show a message on other users in the zone detecting punks"],
 							get = function()
 								return Nx.scdb.profile.Social.PunkMAlertText
 							end,
@@ -201,8 +202,8 @@ local function socialConfig()
 							order = 9,
 							type = "toggle",
 							width = "full",
-							name = "Play Others Punk Sound",
-							desc = "When enabled, Carbonite will play a sound when another Carbonite user in the zone sees a punk",
+							name = L["Play Others Punk Sound"],
+							desc = L["When enabled, Carbonite will play a sound when another Carbonite user in the zone sees a punk"],
 							get = function()
 								return Nx.scdb.profile.Social.PunkMAlertSnd
 							end,
@@ -214,8 +215,8 @@ local function socialConfig()
 							order = 10,
 							type = "toggle",
 							width = "full",
-							name = "Show Punks Message",
-							desc = "When enabled, Carbonite will show a message in your chat when you detect a punk",
+							name = L["Show Punks Message"],
+							desc = L["When enabled, Carbonite will show a message in your chat when you detect a punk"],
 							get = function()
 								return Nx.scdb.profile.Social.PunkNewLocalWarnChat
 							end,
@@ -227,8 +228,8 @@ local function socialConfig()
 							order = 11,
 							type = "toggle",
 							width = "full",
-							name = "Play Punk Sound",
-							desc = "When enabled, Carbonite will play a sound when you detect a new punk",
+							name = L["Play Punk Sound"],
+							desc = L["When enabled, Carbonite will play a sound when you detect a new punk"],
 							get = function()
 								return Nx.scdb.profile.Social.PunkNewLocalWarnSnd
 							end,
@@ -240,8 +241,8 @@ local function socialConfig()
 							order = 12,
 							type = "toggle",
 							width = "full",
-							name = "Show Punks In Safe Areas",
-							desc = "When enabled, Carbonite will show punks even in sanctuary areas",
+							name = L["Show Punks In Safe Areas"],
+							desc = L["When enabled, Carbonite will show punks even in sanctuary areas"],
 							get = function()
 								return Nx.scdb.profile.Social.PunkShowInSafeArea
 							end,
@@ -259,8 +260,8 @@ local function socialConfig()
 							order = 14,
 							type = "toggle",
 							width = "full",
-							name = "Show Punks On Map",
-							desc = "When enabled, Carbonite will show punks on your map",
+							name = L["Show Punks On Map"],
+							desc = L["When enabled, Carbonite will show punks on your map"],
 							get = function()
 								return Nx.scdb.profile.Social.MapShowPunks
 							end,
@@ -272,7 +273,7 @@ local function socialConfig()
 							order = 15,
 							type = "color",
 							width = "full",
-							name = "Color of punk icon",
+							name = L["Color of punk icon"],
 							hasAlpha = true,
 							get = function()
 								local arr = { strsplit("|",Nx.scdb.profile.Social.PunkIconColor) }
@@ -291,7 +292,7 @@ local function socialConfig()
 							order = 16,
 							type = "color",
 							width = "full",
-							name = "Color of punk map area",
+							name = L["Color of punk map area"],
 							hasAlpha = true,
 							get = function()
 								local arr = { strsplit("|",Nx.scdb.profile.Social.PunkAreaColor) }
@@ -309,8 +310,8 @@ local function socialConfig()
 						pnkareasize = {
 							order = 17,
 							type = "range",
-							name = "Punk Area Size",
-							desc = "Sets the size of the punk area notify on the map.",
+							name = L["Punk Area Size"],
+							desc = L["Sets the size of the punk area notify on the map."],
 							min = 0,
 							max = 5000,
 							step = 10,
@@ -326,7 +327,7 @@ local function socialConfig()
 							order = 18,
 							type = "color",
 							width = "full",
-							name = "Color of other peoples detected punks",
+							name = L["Color of other peoples detected punks"],
 							hasAlpha = true,
 							get = function()
 								local arr = { strsplit("|",Nx.scdb.profile.Social.PunkMAreaColor) }
@@ -344,8 +345,8 @@ local function socialConfig()
 						pnkmareasize = {
 							order = 19,
 							type = "range",
-							name = "Others Punk Area Size",
-							desc = "Sets the size of the punk area notify on the map from other carbonite users.",
+							name = L["Others Punk Area Size"],
+							desc = L["Sets the size of the punk area notify on the map from other carbonite users."],
 							min = 0,
 							max = 5000,
 							step = 10,
@@ -361,8 +362,8 @@ local function socialConfig()
 							order = 20,
 							type = "toggle",
 							width = "full",
-							name = "Show Battleground Punks On Map",
-							desc = "When enabled, Carbonite will show punks on your map in battlegrounds",
+							name = L["Show Battleground Punks On Map"],
+							desc = L["When enabled, Carbonite will show punks on your map in battlegrounds"],
 							get = function()
 								return Nx.scdb.profile.Social.PunkShowInBG
 							end,
@@ -374,7 +375,7 @@ local function socialConfig()
 							order = 21,
 							type = "color",
 							width = "full",
-							name = "Battleground punk color",
+							name = L["Battleground punk color"],
 							hasAlpha = true,
 							get = function()
 								local arr = { strsplit("|",Nx.scdb.profile.Social.PunkBGAreaColor) }
@@ -392,8 +393,8 @@ local function socialConfig()
 						pnkbgareasize = {
 							order = 22,
 							type = "range",
-							name = "Battleground Punk Area Size",
-							desc = "Sets the size of the punk area in BGs.",
+							name = L["Battleground Punk Area Size"],
+							desc = L["Sets the size of the punk area in BGs."],
 							min = 0,
 							max = 5000,
 							step = 10,
@@ -409,15 +410,15 @@ local function socialConfig()
 				},
 				teamWin = {
 					type = "group",
-					name = "Team Options",
+					name = L["Team Options"],
 					order = 3,
 					args = {
 						teamenable = {
 							order = 1,
 							type = "toggle",
 							width = "full",
-							name = "Enable the Team HUD",
-							desc = "When enabled, Carbonite can display a HUD of your team mates (RELOAD REQUIRED)",
+							name = L["Enable the Team HUD"],
+							desc = L["When enabled, Carbonite can display a HUD of your team mates (RELOAD REQUIRED)"],
 							get = function()
 								return Nx.scdb.profile.Social.TeamTWinEnable
 							end,
@@ -430,8 +431,8 @@ local function socialConfig()
 							order = 1,
 							type = "toggle",
 							width = "full",
-							name = "Hide the team button window",
-							desc = "When enabled, Carbonite will hide the team window",
+							name = L["Hide the team button window"],
+							desc = L["When enabled, Carbonite will hide the team window"],
 							get = function()
 								return Nx.scdb.profile.Social.TeamTWinHide
 							end,
@@ -443,8 +444,8 @@ local function socialConfig()
 						teamtargets = {
 							order = 2,
 							type = "range",
-							name = "number of target buttons",
-							desc = "Sets the number of buttons for team members in the teamhud (RELOAD REQUIRED)",
+							name = L["number of target buttons"],
+							desc = L["Sets the number of buttons for team members in the teamhud (RELOAD REQUIRED)"],
 							min = 0,
 							max = 40,
 							step = 1,
@@ -502,7 +503,7 @@ function CarboniteSocial:OnInitialize()
 	CarboniteSocial:RegisterEvent("WORLD_MAP_UPDATE", "On_Event")
 	CarboniteSocial:RegisterComm("carbmodule",Nx.Social.OnChat_msg_addon)
 --	CarboniteSocial.EventTimer = CarboniteSocial:ScheduleRepeatingTimer("On_Update",2)
-	Nx:AddToConfig("Social & Punks Module",socialConfig(),"Social & Punks Module")
+	Nx:AddToConfig("Social & Punks Module",socialConfig(),L["Social & Punks Module"])
 	Nx.Social:SetCols()
 end
 
@@ -685,7 +686,7 @@ function Nx.Social:HideUIPanel (frame)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 
 function Nx.Social:RestoreFriendsFrame()
 
@@ -712,8 +713,9 @@ function Nx.Social:RestoreFriendsFrame()
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Open window
+---------------------------------------------------------------------------------------
 
 function Nx.Social:Show (on)
 
@@ -724,8 +726,9 @@ function Nx.Social:Show (on)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Hide window. Used before combat lockdown
+---------------------------------------------------------------------------------------
 
 function Nx.Social:PreCombatHide()
 
@@ -743,8 +746,9 @@ function Nx.Social:PreCombatHide()
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Create window
+---------------------------------------------------------------------------------------
 
 function Nx.Social:Create()
 	if not Nx.scdb.profile.Social.SocialEnable then
@@ -805,14 +809,14 @@ function Nx.Social:Create()
 	local palw = 0
 	local selected = 2
 --PAIDS!
-	palw = 40
+	palw = 46
 	selected = 1
 --PAIDE!
 
 	local orig = 3
 
-	bar:AddTab ("Pals", 1, palw)
-	bar:AddTab ("Punks", 2, 46)
+	bar:AddTab (L["Pals"], 1, palw)
+	bar:AddTab (L["Punks"], 2, 46)
 
 	if Nx.db.profile.Debug.VerDebug then
 		bar:AddTab ("Com", 3, 38)
@@ -821,11 +825,11 @@ function Nx.Social:Create()
 
 	self.OrigTabI = orig
 
-	bar:AddTab ("Friends", orig, 60, false, "FriendsFrameTabTemplate", 1)
-	bar:AddTab ("Who", orig + 1, 45, false, "FriendsFrameTabTemplate", 2)
---	bar:AddTab ("Guild", orig + 2, 45, false, "FriendsFrameTabTemplate", 3)		--V4 moved
-	bar:AddTab ("Chat", orig + 2, 45, false, "FriendsFrameTabTemplate", 3)
-	bar:AddTab ("Raid", orig + 3, 45, false, "FriendsFrameTabTemplate", 4)
+	bar:AddTab (L["Friends"], orig, 60, false, "FriendsFrameTabTemplate", 1)
+	bar:AddTab (L["Who"], orig + 1, 45, false, "FriendsFrameTabTemplate", 2)
+--	bar:AddTab (L["Guild"], orig + 2, 45, false, "FriendsFrameTabTemplate", 3)		--V4 moved
+	bar:AddTab (L["Chat"], orig + 2, 45, false, "FriendsFrameTabTemplate", 3)
+	bar:AddTab (L["Raid"], orig + 3, 45, false, "FriendsFrameTabTemplate", 4)
 
 	--
 
@@ -835,7 +839,7 @@ function Nx.Social:Create()
 	bar:Select (selected)					-- Select after list is created
 end
 
---------
+---------------------------------------------------------------------------------------
 
 function Nx.Social:OnWin (typ)
 
@@ -858,7 +862,7 @@ function Nx.Social:OnFriendListUpdate (event)
 	self.List:Update()
 end
 
---------
+---------------------------------------------------------------------------------------
 
 function Nx.Social:OnUpdate()
 
@@ -896,7 +900,7 @@ function Nx.Social:OnUpdate()
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 
 function Nx.Social.PanelTemplates_SetTab (frame, index)
 
@@ -912,7 +916,7 @@ function Nx.Social.PanelTemplates_SetTab (frame, index)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 
 function Nx.Social:OnTabBar (index, click, inSetTab)
 
@@ -989,8 +993,9 @@ function Nx.Social:ShowBlizzTabs (show)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Create social list
+---------------------------------------------------------------------------------------
 
 function Nx.Social.List:Create()
 
@@ -1029,11 +1034,11 @@ function Nx.Social.List:Create()
 --	list:SetLineHeight (12)
 
 	list:ColumnAdd ("", 1, 80)
-	list:ColumnAdd ("Character", 2, 110)
-	list:ColumnAdd ("Lvl", 3, 20)
-	list:ColumnAdd ("Class", 4, 65)
-	list:ColumnAdd ("Zone", 5, 150)
-	list:ColumnAdd ("Note", 6, 500)
+	list:ColumnAdd (L["Character"], 2, 110)
+	list:ColumnAdd (L["Lvl"], 3, 30)
+	list:ColumnAdd (L["Class"], 4, 65)
+	list:ColumnAdd (L["Zone"], 5, 150)
+	list:ColumnAdd (L["Note"], 6, 500)
 
 	win:Attach (list.Frm, 0, 1, 0, -tbH)
 
@@ -1047,7 +1052,7 @@ function Nx.Social.List:Create()
 	-- Generic menu
 
 	local function funcOpenOptions()
-		Nx.Opts:Open ("Social & Punks")
+		Nx.Opts:Open (L["Social & Punks"])
 	end
 
 	-- Create pals menu
@@ -1073,7 +1078,7 @@ function Nx.Social.List:Create()
 		end
 	end
 
-	menu:AddItem (0, "Whisper", func, self)
+	menu:AddItem (0, L["Whisper"], func, self)
 
 	local function func (self)
 		if self.MenuSelName then
@@ -1081,7 +1086,7 @@ function Nx.Social.List:Create()
 		end
 	end
 
-	menu:AddItem (0, "Invite", func, self)
+	menu:AddItem (0, L["Invite"], func, self)
 
 	menu:AddItem (0, "")
 
@@ -1094,7 +1099,7 @@ function Nx.Social.List:Create()
 		end
 	end
 
-	menu:AddItem (0, "Add Pal And Friend", func, self)
+	menu:AddItem (0, L["Add Pal And Friend"], func, self)
 
 	local function func (self)
 		if self.MenuSelName then
@@ -1108,7 +1113,7 @@ function Nx.Social.List:Create()
 		end
 	end
 
-	menu:AddItem (0, "Remove Pal And Friend", func, self)
+	menu:AddItem (0, L["Remove Pal And Friend"], func, self)
 
 	menu:AddItem (0, "")
 
@@ -1122,16 +1127,16 @@ function Nx.Social.List:Create()
 		end
 	end
 
-	self.PalMenuINote = menu:AddItem (0, "Set Note", func, self)
-	menu:AddItem (0, "Set Person", self.Menu_OnSetPerson, self)
+	self.PalMenuINote = menu:AddItem (0, L["Set Note"], func, self)
+	menu:AddItem (0, L["Set Person"], self.Menu_OnSetPerson, self)
 
 	menu:AddItem (0, "")
 
-	menu:AddItem (0, "Make Pal (Red) Into Friend", self.Menu_OnMakePalFriend, self)
-	menu:AddItem (0, "Make All Pals Into Friends", self.Menu_OnMakePalsFriends, self)
+	menu:AddItem (0, L["Make Pal (Red) Into Friend"], self.Menu_OnMakePalFriend, self)
+	menu:AddItem (0, L["Make All Pals Into Friends"], self.Menu_OnMakePalsFriends, self)
 
 	menu:AddItem (0, "")
-	menu:AddItem (0, "Options...", funcOpenOptions, self)
+	menu:AddItem (0, L["Options..."], funcOpenOptions, self)
 
 	-- Create punks menu
 
@@ -1142,22 +1147,22 @@ function Nx.Social.List:Create()
 		self:GotoPunk (self.List.MenuSelName)
 	end
 
-	menu:AddItem (0, "Goto", func, Nx.Social)
+	menu:AddItem (0, L["Goto"], func, Nx.Social)
 
-	menu:AddItem (0, "Add Character", self.Menu_OnPunkAdd, self)
-	menu:AddItem (0, "Remove Character", self.Menu_OnPunkRemove, self)
+	menu:AddItem (0, L["Add Character"], self.Menu_OnPunkAdd, self)
+	menu:AddItem (0, L["Remove Character"], self.Menu_OnPunkRemove, self)
 
-	menu:AddItem (0, "Set Note", self.Menu_OnPunkSetNote, self)
+	menu:AddItem (0, L["Set Note"], self.Menu_OnPunkSetNote, self)
 
 	local function func (self)
 		Nx:ClearSocial ("PkAct")
 		self.PunksActive = Nx:GetSocial ("PkAct")
 	end
 
-	menu:AddItem (0, "Clear Actives", func, Nx.Social)
+	menu:AddItem (0, L["Clear Actives"], func, Nx.Social)
 
 	menu:AddItem (0, "")
-	menu:AddItem (0, "Options...", funcOpenOptions, self)
+	menu:AddItem (0, L["Options..."], funcOpenOptions, self)
 
 end
 
@@ -1188,7 +1193,7 @@ function Nx.Social.List:Menu_OnSetPerson()
 
 	if self.MenuSelName then
 		local person = self:FindFriendPerson (self.MenuSelName) or ""
-		Nx:ShowEditBox ("Set person who owns character", person, self.MenuSelName, self.SetPersonAccept)
+		Nx:ShowEditBox (L["Set person who owns character"], person, self.MenuSelName, self.SetPersonAccept)
 	end
 end
 
@@ -1227,7 +1232,7 @@ function Nx.Social.List:Menu_OnPunkAdd()
 		self:PunkAdd (name, UnitLevel ("target"), UnitClass ("target"))
 		self:Update()
 	else
-		Nx:ShowEditBox ("Add punk name", self.MenuSelName or Nx.Social.LastLocalPunk or "", self, self.PunkAddAccept)
+		Nx:ShowEditBox (L["Add punk name"], self.MenuSelName or Nx.Social.LastLocalPunk or "", self, self.PunkAddAccept)
 	end
 end
 
@@ -1268,7 +1273,7 @@ function Nx.Social.List:Menu_OnPunkSetNote()
 		if punk then
 			self.MenuPunkName = self.MenuSelName
 			local tm, lvl, class, note = strsplit ("~", punk)
-			Nx:ShowEditBox ("Set note", note or "", self, self.PunkSetNote)
+			Nx:ShowEditBox (L["Set note"], note or "", self, self.PunkSetNote)
 		end
 	end
 end
@@ -1282,8 +1287,9 @@ function Nx.Social.List.PunkSetNote (text, list)
 	list:Update()
 end
 
---------
+---------------------------------------------------------------------------------------
 -- On list control updates
+---------------------------------------------------------------------------------------
 
 function Nx.Social.List:OnListEvent (eventName, sel, val2, click)
 
@@ -1339,10 +1345,11 @@ function Nx.Social.List:FindFriendI (friend)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Find person who has friend
 -- (friend name)
 -- ret person name
+---------------------------------------------------------------------------------------
 
 function Nx.Social.List:FindFriendPerson (friend)
 
@@ -1369,8 +1376,9 @@ function Nx.Social.List:SetPersonFriend (person, friend)
 	friends[friend] = ""
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Clear friend from all persons
+---------------------------------------------------------------------------------------
 
 function Nx.Social.List:ClrFriend (friend)
 
@@ -1413,7 +1421,7 @@ function Nx.Social.List:Update()
 	if tabI == 1 then
 
 --PAIDS!
-		list:ColumnSetName (1, "Person")
+		list:ColumnSetName (1, L["Person"])
 
 		-- Person A Char A
 		-- Person A Char B
@@ -1482,7 +1490,7 @@ function Nx.Social.List:Update()
 
 		sort (data, func)
 
-		win:SetTitle (format ("Pals: |cffffffff%d/%d", cnt, 50))
+		win:SetTitle (format (L["Pals: |cffffffff%d/%d"], cnt, 50))
 
 		for _, plyr in ipairs (data) do
 
@@ -1534,7 +1542,7 @@ function Nx.Social.List:Update()
 
 	elseif tabI == 2 then
 
-		list:ColumnSetName (1, "Status")
+		list:ColumnSetName (1, L["Status"])
 
 		local punks = soc.Punks
 		local punksA = soc.PunksActive
@@ -1560,7 +1568,7 @@ function Nx.Social.List:Update()
 			list:ItemAdd (pName)
 
 			if punksA[pName] then
-				list:ItemSet (1, "|cffff6060Found")
+				list:ItemSet (1, L["|cffff6060Found"])
 			end
 			list:ItemSet (2, pName)
 
@@ -1580,7 +1588,7 @@ function Nx.Social.List:Update()
 
 		list:ItemAdd()
 		list:ItemAdd()
-		list:ItemSet (2, "|cff8080ff-- Active --")
+		list:ItemSet (2, L["|cff8080ff-- Active --"])
 
 		local data = {}
 
@@ -1614,10 +1622,10 @@ function Nx.Social.List:Update()
 			local mapName = GetMapNameByID(punk.MId) or "?"
 			list:ItemSet (5, format ("%s %d %d", mapName, punk.X, punk.Y))
 
-			list:ItemSet (6, format ("Near %s", punk.FinderName))
+			list:ItemSet (6, format (L["Near %s"], punk.FinderName))
 		end
 
-		win:SetTitle (format ("Punks: %s  Active: %s", myCnt, actCnt))
+		win:SetTitle (format (L["Punks: %s  Active: %s"], myCnt, actCnt))
 
 	elseif Nx.db.profile.Debug.VerDebug and tabI == 3 then
 
@@ -1654,7 +1662,7 @@ function Nx.Social.List:Update()
 			end
 
 			if mId then
-				local name = GetMapNameById(tonumber (mId, 16)) or "?"
+				local name = GetMapNameByID(tonumber (mId, 16)) or "?"
 				list:ItemSet (5, name)
 			end
 
@@ -1667,14 +1675,15 @@ function Nx.Social.List:Update()
 
 		local capCnt = Nx.Util_tcount (Nx:GetCap()["Q"])
 
-		win:SetTitle (format ("Total: %s Q%s, active %s, data %s", cnt, qcnt, actCnt, capCnt))
+		win:SetTitle (format (L["Total: %s Q%s, active %s, data %s"], cnt, qcnt, actCnt, capCnt))
 	end
 
 	list:Update()
 end
 
--------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 -- Punks management
+---------------------------------------------------------------------------------------
 
 function Nx.Social:DecodeComRcvPunks (finderName, info, punksStr)
 
@@ -1697,11 +1706,12 @@ function Nx.Social:DecodeComRcvPunks (finderName, info, punksStr)
 			lvl = 0
 		end
 		if Nx.scdb.profile.Social.PunkEnable then
-			local punk = self:GetPunk (name, nil, info.MId, info.X, info.Y)
-
-			punk.FinderName = finderName
-			punk.Lvl = max (lvl, punk.Lvl or 0)
-			punk.Time = info.T
+			if info.MId < 1000 then
+				local punk = self:GetPunk (name, nil, info.MId, info.X, info.Y)
+				punk.FinderName = finderName
+				punk.Lvl = max (lvl, punk.Lvl or 0)
+				punk.Time = info.T
+			end
 		end
 	end
 
@@ -1713,8 +1723,9 @@ function Nx.Social:DecodeComRcvPunks (finderName, info, punksStr)
 	Nx.TEMPmsg = nil
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Add a punk we detected ourselves
+---------------------------------------------------------------------------------------
 
 function Nx.Social:AddLocalPunk (name, plyrNear, level, class)
 
@@ -1730,7 +1741,7 @@ function Nx.Social:AddLocalPunk (name, plyrNear, level, class)
 
 	self.LastLocalPunk = name
 
-	local rMapId = map.RMapId
+	local rMapId = map.UpdateMapID
 	local x, y = map.PlyrRZX, map.PlyrRZY
 
 	if plyrNear then
@@ -1768,15 +1779,15 @@ function Nx.Social:AddLocalPunk (name, plyrNear, level, class)
 	if not punk.Time and not Nx.InBG and Nx.scdb.profile.Social.PunkNewLocalWarnChat then	-- New?
 
 		if not Nx.InSanctuary or Nx.scdb.profile.Social.PunkShowInSafeArea then
-			local typ = self.Punks[name] and "|cffff4040Punk" or "Enemy"
-			Nx.prt ("%s %s detected near you", typ, name)
+			local typ = self.Punks[name] and L["|cffff4040Punk"] or L["Enemy"]
+			Nx.prt (L["%s %s detected near you"], typ, name)
 			if Nx.scdb.profile.Social.PunkNewLocalWarnSnd then
 				Nx:PlaySoundFile ("sound\\doodad\\belltolltribal.wav")
 			end
 		end
 	end
 
-	punk.FinderName = "me"
+	punk.FinderName = "me"		-- Maybe replace with translation string. Must take a look
 	punk.Lvl = level or punk.Lvl or 0
 	punk.Class = class or punk.Class
 	if not punk.Time or GetTime() - punk.Time > 2 then
@@ -1791,9 +1802,13 @@ function Nx.Social:AddLocalPunk (name, plyrNear, level, class)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 
 function Nx.Social:GetPunk (name, plyrNear, mId, x, y)
+	if mId > 1000 then ------ Work around to stop chat spam, to be removed at a later date once everyone is using the official code over work around version.
+		return
+	end
+
 	if Nx.scdb.profile.Social.PunkEnable then
 	local punk = self.PunksActive[name]
 	if not punk then
@@ -1830,15 +1845,15 @@ function Nx.Social:GetPunk (name, plyrNear, mId, x, y)
 --			note = "Test note. xyz. abc 12213213872xxx"
 
 			if note then
-				UIErrorsFrame:AddMessage (format ("Note: %s", note), 1, 0, 1, 1)
+				UIErrorsFrame:AddMessage (format (L["Note: %s"], note), 1, 0, 1, 1)
 			end
 
 			local map = Nx.Map:GetMap (1)
 			local wx, wy = map:GetWorldPos (mId, x, y)
 			local dist = ((map.PlyrX - wx) ^ 2 + (map.PlyrY - wy) ^ 2) ^ .5 * 4.575
-			local s = dist < 100 and "|cffff4000near you" or format ("at %d yards", dist)
+			local s = dist < 100 and L["|cffff4000near you"] or format (L["at %d yards"], dist)
 
-			UIErrorsFrame:AddMessage (format ("|cffff4000%s|r detected %s!", name, s), 1, 1, 0, 1)
+			UIErrorsFrame:AddMessage (format (L["|cffff4000%s|r detected %s!"], name, s), 1, 1, 0, 1)
 		end
 		if Nx.scdb.profile.Social.PunkMAlertSnd then
 			Nx:PlaySoundFile ("sound\\spells\\antiholy.wav")
@@ -1854,7 +1869,7 @@ function Nx.Social:GetPunk (name, plyrNear, mId, x, y)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 
 function Nx.Social:OnUpdateTimer()
 
@@ -1867,8 +1882,9 @@ function Nx.Social:OnUpdateTimer()
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Update punks data
+---------------------------------------------------------------------------------------
 
 function Nx.Social:CalcPunks()
 
@@ -1892,202 +1908,168 @@ function Nx.Social:CalcPunks()
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Update map icons (called by map)
+---------------------------------------------------------------------------------------
 
 function Nx.Social:UpdateIcons (map)
 	if Nx.scdb.profile.Social.PunkEnable then
-	if Nx.Tick % 120 == 4 then
-		self:CalcPunks()
-	end
-
-	local math = math
-	local alt = IsAltKeyDown()
-	local tm = GetTime()
-
-	local punks = self.Punks
-	local punksA = self.PunksActive
-
-	local size = Nx.scdb.profile.Social.PunkAreaSize * map.ScaleDraw
-	local sizeM = Nx.scdb.profile.Social.PunkMAreaSize * map.ScaleDraw
-
-	local areaR, areaG, areaB = Nx.Social.Cols["areaR"], Nx.Social.Cols["areaG"], Nx.Social.Cols["areaB"]
-	local iconR, iconG, iconB, iconA = Nx.Social.Cols["iconR"], Nx.Social.Cols["iconG"], Nx.Social.Cols["iconB"], Nx.Social.Cols["iconA"]
-	local areaRM, areaGM, areaBM = Nx.Social.Cols["areaRM"], Nx.Social.Cols["areaGM"], Nx.Social.Cols["areaBM"]
-
-	local showInSafeArea = Nx.scdb.profile.Social.PunkShowInSafeArea
-
-	local decay = .24
-	local decayM = .21
-
-	local inBG = Nx.InBG
-
-	if inBG then
-		if not Nx.scdb.profile.Social.PunkShowInBG or Nx.Free then
-			return
+		if Nx.Tick % 120 == 4 then
+			self:CalcPunks()
 		end
 
-		size = Nx.scdb.profile.Social.PunkBGAreaSize * map.ScaleDraw
-		areaR = Nx.Social.Cols["areaBGR"]
-		areaG = Nx.Social.Cols["areaBGG"]
-		areaB = Nx.Social.Cols["areaBGB"]
+		local math = math
+		local alt = IsAltKeyDown()
+		local tm = GetTime()
 
-		local decay = 2
-		local decayM = .25
-	end
+		local punks = self.Punks
+		local punksA = self.PunksActive
 
-	local iconGlow = abs (GetTime() * 400 % 200 - 100) / 400 + .75
+		local size = Nx.scdb.profile.Social.PunkAreaSize * map.ScaleDraw
+		local sizeM = Nx.scdb.profile.Social.PunkMAreaSize * map.ScaleDraw
 
-	if alt then
-		map.Level = map.Level + 11
-	end
+		local areaR, areaG, areaB = Nx.Social.Cols["areaR"], Nx.Social.Cols["areaG"], Nx.Social.Cols["areaB"]
+		local iconR, iconG, iconB, iconA = Nx.Social.Cols["iconR"], Nx.Social.Cols["iconG"], Nx.Social.Cols["iconB"], Nx.Social.Cols["iconA"]
+		local areaRM, areaGM, areaBM = Nx.Social.Cols["areaRM"], Nx.Social.Cols["areaGM"], Nx.Social.Cols["areaBM"]
 
-	for pName, punk in pairs (punksA) do
+		local showInSafeArea = Nx.scdb.profile.Social.PunkShowInSafeArea
 
-		local dur = tm - punk.Time
-		local circleDur = tm - punk.CircleTime
-		local punkMId = punk.MId
+		local decay = .24
+		local decayM = .21
 
-		local wx, wy = map:GetWorldPos (punkMId, punk.X, punk.Y)
-		local x = wx + math.sin (punk.DrawDir) * 2
-		local y = wy + math.cos (punk.DrawDir) * 2
+		local inBG = Nx.InBG
 
-		-- DEBUG!
---		if IsControlKeyDown() then
---			local sz = size / (circleDur * decay + 1)
---			Nx.prt ("Punk %s near %s %s %s sz%s", pName, punk.PlyrNear or "nil", x, y, sz)
---		end
-
-		if punks[pName] then	-- Punk match?
-
-			local sz = sizeM / (circleDur * decayM + 1)
-
-			if sz >= 1 then
-				sz = max (sz, 25)
-
-				local f = map:GetIconNI()
-
-				if map:ClipFrameW (f, x, y, sz, sz, 0) then
-
-					f.texture:SetBlendMode ("ADD")
-					f.texture:SetTexture ("Interface\\AddOns\\Carbonite\\Gfx\\Map\\IconCircle")
-
-					if dur < .1 then
-						f.texture:SetVertexColor (.3, 1, .3, 1)
-					else
-						f.texture:SetVertexColor (areaRM, areaGM, areaBM, 1)
-					end
-				end
+		if inBG then
+			if not Nx.scdb.profile.Social.PunkShowInBG or Nx.Free then
+				return
 			end
 
-		else
+			size = Nx.scdb.profile.Social.PunkBGAreaSize * map.ScaleDraw
+			areaR = Nx.Social.Cols["areaBGR"]
+			areaG = Nx.Social.Cols["areaBGG"]
+			areaB = Nx.Social.Cols["areaBGB"]
 
-			if (not Nx.InSanctuary or showInSafeArea) then
-				local sz = size / (circleDur * decay + 1)
+			local decay = 2
+			local decayM = .25
+		end
 
-				if sz >= 1 then
-					sz = max (sz, 22)
+		local iconGlow = abs (GetTime() * 400 % 200 - 100) / 400 + .75
 
-					local f = map:GetIconNI()
+		if alt then
+			map.Level = map.Level + 11
+		end
 
-					if map:ClipFrameW (f, x, y, sz, sz, 0) then
+		for pName, punk in pairs (punksA) do
 
-						f.texture:SetBlendMode ("ADD")
-						f.texture:SetTexture ("Interface\\AddOns\\Carbonite\\Gfx\\Map\\IconCircle")
-
-						if dur < .05 then
-							if inBG then
-								f.texture:SetVertexColor (.15, .15, .15, 1)
+			local dur = tm - punk.Time
+			local circleDur = tm - punk.CircleTime
+			local punkMId = punk.MId
+			if punkMId < 1000 then			---- Work around to stop chat spam, to be removed at a later time when everyone is on official carbonite.
+				local wx, wy = map:GetWorldPos (punkMId, punk.X, punk.Y)
+				local x = wx + math.sin (punk.DrawDir) * 2
+				local y = wy + math.cos (punk.DrawDir) * 2
+				if punks[pName] then	-- Punk match?
+					local sz = sizeM / (circleDur * decayM + 1)
+					if sz >= 1 then
+						sz = max (sz, 25)
+						local f = map:GetIconNI()
+						if map:ClipFrameW (f, x, y, sz, sz, 0) then
+							f.texture:SetBlendMode ("ADD")
+							f.texture:SetTexture ("Interface\\AddOns\\Carbonite\\Gfx\\Map\\IconCircle")
+							if dur < .1 then
+								f.texture:SetVertexColor (.3, 1, .3, 1)
 							else
-								f.texture:SetVertexColor (.25, .25, .25, 1)
+								f.texture:SetVertexColor (areaRM, areaGM, areaBM, 1)
 							end
-						else
-							f.texture:SetVertexColor (areaR, areaG, areaB, 1)
+						end
+					end
+				else
+					if (not Nx.InSanctuary or showInSafeArea) then
+						local sz = size / (circleDur * decay + 1)
+						if sz >= 1 then
+							sz = max (sz, 22)
+							local f = map:GetIconNI()
+							if map:ClipFrameW (f, x, y, sz, sz, 0) then
+								f.texture:SetBlendMode ("ADD")
+								f.texture:SetTexture ("Interface\\AddOns\\Carbonite\\Gfx\\Map\\IconCircle")
+								if dur < .05 then
+									if inBG then
+										f.texture:SetVertexColor (.15, .15, .15, 1)
+									else
+										f.texture:SetVertexColor (.25, .25, .25, 1)
+									end
+								else
+									f.texture:SetVertexColor (areaR, areaG, areaB, 1)
+								end
+							end
+						end
+					end
+				end
+			-- Draw punk dot
+				if punks[pName] then	-- Punk match?
+					local f = map:GetIcon (2)
+					if map:ClipFrameW (f, x, y, 14, 14, 0) then
+						local lvl = punk.Lvl > 0 and punk.Lvl or "?"
+						local mapName = GetMapNameByID(punkMId) or "?"
+						f.NxTip = format (L["*|cffff0000%s %s, %d:%02d ago\n%s (%d,%d)"], pName, lvl, dur / 60 % 60, dur % 60, mapName, punk.X, punk.Y)
+						f.NXType = 3001
+						f.NXData = pName
+						f.texture:SetTexture ("Interface\\AddOns\\Carbonite\\Gfx\\Map\\IconPlyrZ")
+						f.texture:SetVertexColor (iconR, iconG, iconB, iconA * iconGlow)
+						if alt then
+							local txt = map:GetText (format ("*|cffff0000%s|r*", pName))
+							map:MoveTextToIcon (txt, f, 18, 1)
+						end
+					end
+				else
+					if (not Nx.InSanctuary or showInSafeArea) then
+						local i = dur < 10 and 2 or 1
+						local f = map:GetIcon (i)
+						if map:ClipFrameW (f, x, y, 10, 10, 0) then
+							local lvl = punk.Lvl > 0 and punk.Lvl or "?"
+							local mapName = GetMapNameByID(punkMId) or "?"
+							f.NxTip = format (L["|cffff6060%s %s, %d:%02d ago\n%s (%d,%d)"], pName, lvl, dur / 60 % 60, dur % 60, mapName, punk.X, punk.Y)
+							f.NXType = 3001
+							f.NXData = pName
+							f.texture:SetTexture ("Interface\\AddOns\\Carbonite\\Gfx\\Map\\IconPlyrZ")
+							if dur < 10 then
+								f.texture:SetVertexColor (iconR, iconG, iconB, iconA * iconGlow)
+							else
+								f.texture:SetVertexColor (iconR, iconG, iconB, iconA * .6)
+							end
 						end
 					end
 				end
 			end
 		end
-
-		-- Draw punk dot
-
-		if punks[pName] then	-- Punk match?
-
-			local f = map:GetIcon (2)
-
-			if map:ClipFrameW (f, x, y, 14, 14, 0) then
-
-				local lvl = punk.Lvl > 0 and punk.Lvl or "?"
-				local mapName = idToName[punkMId] or "?"
-
-				f.NxTip = format ("*|cffff0000%s %s, %d:%02d ago\n%s (%d,%d)", pName, lvl, dur / 60 % 60, dur % 60, mapName, punk.X, punk.Y)
-				f.NXType = 3001
-				f.NXData = pName
-				f.texture:SetTexture ("Interface\\AddOns\\Carbonite\\Gfx\\Map\\IconPlyrZ")
-				f.texture:SetVertexColor (iconR, iconG, iconB, iconA * iconGlow)
-
-				if alt then
-					local txt = map:GetText (format ("*|cffff0000%s|r*", pName))
-					map:MoveTextToIcon (txt, f, 18, 1)
-				end
-			end
-
+		if alt then
+			map.Level = map.Level - 11
 		else
-
-			if (not Nx.InSanctuary or showInSafeArea) then
-
-				local i = dur < 10 and 2 or 1
-				local f = map:GetIcon (i)
-
-				if map:ClipFrameW (f, x, y, 10, 10, 0) then
-
-					local lvl = punk.Lvl > 0 and punk.Lvl or "?"
-					local mapName = idToName[punkMId] or "?"
-
-					f.NxTip = format ("|cffff6060%s %s, %d:%02d ago\n%s (%d,%d)", pName, lvl, dur / 60 % 60, dur % 60, mapName, punk.X, punk.Y)
-					f.NXType = 3001
-					f.NXData = pName
-
-					f.texture:SetTexture ("Interface\\AddOns\\Carbonite\\Gfx\\Map\\IconPlyrZ")
-
-					if dur < 10 then
-						f.texture:SetVertexColor (iconR, iconG, iconB, iconA * iconGlow)
-					else
-						f.texture:SetVertexColor (iconR, iconG, iconB, iconA * .6)
-					end
-				end
-			end
+			map.Level = map.Level + 3
 		end
 	end
-
-	if alt then
-		map.Level = map.Level - 11
-	else
-		map.Level = map.Level + 3
-	end
-	end
-
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Goto a named punk
+---------------------------------------------------------------------------------------
 
 function Nx.Social:GotoPunk (name)
-
 	local punk = self.PunksActive[name]
-	if punk then
-
-		local map = Nx.Map:GetMap (1)
-		local wx, wy = map:GetWorldPos (punk.MId, punk.X, punk.Y)
-		local x = wx + math.sin (punk.DrawDir) * 2
-		local y = wy + math.cos (punk.DrawDir) * 2
-
-		map:SetTarget ("Goto", x, y, x, y, false, 0, name)
+	if punk.MId < 1000 then --- WORK AROUND
+		if punk then
+			local map = Nx.Map:GetMap (1)
+			local wx, wy = map:GetWorldPos (punk.MId, punk.X, punk.Y)
+			local x = wx + math.sin (punk.DrawDir) * 2
+			local y = wy + math.cos (punk.DrawDir) * 2
+			map:SetTarget (L["Goto"], x, y, x, y, false, 0, name)
+		end
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Get a named punks paste info
+---------------------------------------------------------------------------------------
 
 function Nx.Social:GetPunkPasteInfo (name)
 
@@ -2096,16 +2078,16 @@ function Nx.Social:GetPunkPasteInfo (name)
 
 		local lvl = punk.Lvl > 0 and punk.Lvl or "?"
 		local class = punk.Class or "?"
-		return format ("Punk: %s, %s %s at %s %d %d", name, lvl, class, GetMapNameById(punk.MId) or "?", punk.X, punk.Y)
+		return format (L["Punk: %s, %s %s at %s %d %d"], name, lvl, class, GetMapNameByID(punk.MId) or "?", punk.X, punk.Y)
 	end
 
 	return ""
 end
 
--------------------------------------------------------------------------------
-
---------
+---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 -- Create punk HUD
+---------------------------------------------------------------------------------------
 
 function Nx.Social.PunksHUD:Create()
 
@@ -2184,9 +2166,10 @@ function Nx.Social.PunksHUD:Create()
 
 end
 
---------
+---------------------------------------------------------------------------------------
 -- SecureTemplates Click handler
 -- self is button frame
+---------------------------------------------------------------------------------------
 
 function Nx.Social.PunksHUD:Click()
 
@@ -2195,13 +2178,13 @@ function Nx.Social.PunksHUD:Click()
 
 	if IsShiftKeyDown() then
 		Nx.Social.List:PunkAdd (but.NXName)
-		Nx.prt ("Punk %s added", but.NXName or "")
+		Nx.prt (L["Punk %s added"], but.NXName or "")
 	else
 		Nx.Social.PunksHUD:Remove (but.NXName)
 	end
 end
 
---------
+---------------------------------------------------------------------------------------
 
 function Nx.Social.PunksHUD:Add (name)
 
@@ -2235,7 +2218,7 @@ function Nx.Social.PunksHUD:Add (name)
 --PAIDE!
 end
 
---------
+---------------------------------------------------------------------------------------
 
 function Nx.Social.PunksHUD:Remove (name)
 
@@ -2254,7 +2237,7 @@ function Nx.Social.PunksHUD:Remove (name)
 --PAIDE!
 end
 
---------
+---------------------------------------------------------------------------------------
 
 function Nx.Social.PunksHUD:Update()
 
@@ -2290,7 +2273,7 @@ function Nx.Social.PunksHUD:Update()
 				local but = self.Buts[n]
 
 				local function func (self)
-					Nx.prt ("hey")
+					Nx.prt (L["hey"])
 				end
 
 				but:SetAttribute ("macrotext1", "/targetexact " .. name)
@@ -2362,10 +2345,10 @@ function Nx.Social.PunksHUD:Update()
 --PAIDE!
 end
 
--------------------------------------------------------------------------------
-
---------
+---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 -- Create group HUD
+---------------------------------------------------------------------------------------
 
 function Nx.Social.TeamHUD:Create()
 
@@ -2468,7 +2451,7 @@ function Nx.Social.TeamHUD:Create()
 --PAIDE!
 end
 
---------
+---------------------------------------------------------------------------------------
 
 function Nx.Social.TeamHUD:Update()
 
@@ -2495,7 +2478,7 @@ function Nx.Social.TeamHUD:Update()
 
 		local Map = Nx.Map
 		local map = Map:GetMap (1)
-		local mapId, plX, plY = map.RMapId, map.PlyrRZX, map.PlyrRZY
+		local mapId, plX, plY = map.UpdateMapID, map.PlyrRZX, map.PlyrRZY
 		local plX, plY = Map:GetWorldPos (mapId, plX, plY)
 
 		local inArena = Nx.InArena
@@ -2645,7 +2628,7 @@ function Nx.Social.TeamHUD:Update()
 			local targetStr = plTarget == name and "|cff8080ff>" or ""
 			local combatStr = UnitAffectingCombat (unit) and "|cffff4040*" or ""
 			local colStr = player.Dist < 41 and "|cffc0ffc0" or "|cff808080"
-			local distStr = player.Dist ~= 999999 and format ("%d yds", player.Dist) or ""
+			local distStr = player.Dist ~= 999999 and format ("%d " .. L["yds"], player.Dist) or ""
 			local s = format ("%s%s%s%s %s", targetStr, combatStr, colStr, name, distStr)
 
 			self.FStrs[player.FrmI]:SetText (s)
@@ -2657,9 +2640,9 @@ function Nx.Social.TeamHUD:Update()
 		local win = self.Win
 
 		if lockDown then
-			win:SetTitle ("|cffff2020Team:")
+			win:SetTitle (L["|cffff2020Team:"])
 		else
-			win:SetTitle ("Team:")
+			win:SetTitle (L["Team:"])
 		end
 	end
 
@@ -2693,16 +2676,18 @@ function Nx.Social.PCloseWindows()
 end
 
 
---------
+---------------------------------------------------------------------------------------
 -- Get Social data
+---------------------------------------------------------------------------------------
 
 function Nx:GetSocial (typ)
 	local rn = GetRealmName()
 	return Nx.scdb.profile.SocialData[rn][typ]
 end
 
---------
+---------------------------------------------------------------------------------------
 -- Clear Social data
+---------------------------------------------------------------------------------------
 
 function Nx:ClearSocial (typ)
 	local rn = GetRealmName()
@@ -2735,5 +2720,5 @@ function CarboniteSocial:OnCombat_log_event_unfiltered (event, ...)
 	end
 end
 
--------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 -- EOF

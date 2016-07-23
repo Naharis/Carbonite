@@ -1,10 +1,10 @@
-local L = LibStub("AceLocale-3.0"):NewLocale("Carbonite", "enUS", true)
+local L = LibStub("AceLocale-3.0"):NewLocale("Carbonite", "enUS", true, true)
 if not L then return end
 
 -- General Nodes
 L["Artifact"] = true
-L["Gas"] = true
 L["Everfrost"] = true
+L["Gas"] = true
 L["Ooze Covered"] = true
 
 -- Herbs
@@ -72,7 +72,7 @@ L["Stranglekelp"] = true
 L["Sungrass"] = true
 L["Talador Orchid"] = true
 L["Talandra's Rose"] = true
-L["Terrocone"] = true
+L["Terocone"] = true
 L["Tiger Lily"] = true
 L["Twilight Jasmine"] = true
 L["Whiptail"] = true
@@ -80,46 +80,46 @@ L["Wild Steelbloom"] = true
 
 -- Mines
 L["Adamantite Deposit"] = true
-L["Rich Adamantite Deposit"] = true
 L["Ancient Gem Vein"] = true
 L["Blackrock Deposit"] = true
-L["Rich Blackrock Deposit"] = true
 L["Cobalt Deposit"] = true
-L["Rich Cobalt Deposit"] = true
 L["Copper Vein"] = true
 L["Dark Iron Deposit"] = true
 L["Elementium Vein"] = true
-L["Rich Elementium Vein"] = true
 L["Fel Iron Deposit"] = true
 L["Ghost Iron Deposit"] = true
-L["Rich Ghost Iron Deposit"] = true
 L["Gold Vein"] = true
 L["Incendicite Mineral Vein"] = true
 L["Indurium Mineral Vein"] = true
 L["Iron Deposit"] = true
 L["Khorium Vein"] = true
 L["Kyparite Deposit"] = true
-L["Rich Kyparite Deposit"] = true
+L["Large Obsidian Chunk"] = true
 L["Lesser Bloodstone Deposit"] = true
 L["Mithril Deposit"] = true
 L["Nethercite Deposit"] = true
-L["Large Obsidian Chunk"] = true
-L["Small Obsidian Chunk"] = true
 L["Obsidium Deposit"] = true
-L["Rich Obsidium Deposit"] = true
 L["Pyrite Deposit"] = true
+L["Rich Adamantite Deposit"] = true
+L["Rich Blackrock Deposit"] = true
+L["Rich Cobalt Deposit"] = true
+L["Rich Elementium Vein"] = true
+L["Rich Ghost Iron Deposit"] = true
+L["Rich Kyparite Deposit"] = true
+L["Rich Obsidium Deposit"] = true
 L["Rich Pyrite Deposit"] = true
-L["Thorium Vein"] = true -- Used for Ooze covered even tho it's not a real node
-L["Small Thorium Vein"] = true
-L["Rich Thorium Vein"] = true
-L["Saronite Deposit"] = true
 L["Rich Saronite Deposit"] = true
+L["Rich Thorium Vein"] = true
+L["Rich Trillium Vein"] = true
+L["Rich True Iron Deposit"] = true
+L["Saronite Deposit"] = true
 L["Silver Vein"] = true
+L["Small Obsidian Chunk"] = true
+L["Small Thorium Vein"] = true
+L["Smoldering True Iron Deposit"] = true
+L["Thorium Vein"] = true -- Used for Ooze covered even tho it's not a real node
 L["Tin Vein"] = true
 L["Titanium Vein"] = true
 L["Trillium Vein"] = true
-L["Rich Trillium Vein"] = true
-L["Rich True Iron Deposit"] = true
-L["Smoldering True Iron Deposit"] = true
 L["True Iron Deposit"] = true
 L["Truesilver Deposit"] = true

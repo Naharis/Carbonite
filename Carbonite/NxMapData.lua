@@ -23,8 +23,10 @@
 local Map = Nx.Map
 local L = LibStub("AceLocale-3.0"):GetLocale("Carbonite")
 
+-- X and Y are the absolute position (lower-left corner) on the overall
+-- super-zoomed-out continent image (https://github.com/dratr/Carbonite/commits/map-zonesdocs)
 Map.MapInfo = {
-	[0] = {	-- Dummy
+	[0] = {		-- Dummy
 		Name = "Instance",
 		X = 0,
 		Y = 0,
@@ -60,7 +62,7 @@ Map.MapInfo = {
 		Y = -1500,
 	},
 	[6] = {
-	    Name = "Pandaria",
+		Name = "Pandaria",
 		FileName = "Pandaria",
 		X = 2500,
 		Y = 2500,
@@ -98,7 +100,7 @@ Map.MapWorldInfo = {
 	[0] = {
 		10,
 		0, 0,
-		0, 0,  -- Index 4,5 XY world position created for zones in continents 1-5, 9
+		0, 0,		-- Index 4,5 XY world position created for zones in continents 1-5, 9
 		Overlay = "barrens",
 	},
 	[4] = {
@@ -705,7 +707,7 @@ Map.MapWorldInfo = {
 		X = 120,
 		Y = -1533.7499023437,
 		Overlay = "zuldrak",
-		Name = L["Zul'Drak"], -- [11]
+		Name = L["Zul'Drak"],	-- [11]
 		QAchievementId = 36,
 	},
 	[499] = {
@@ -887,11 +889,20 @@ Map.MapWorldInfo = {
 		Name = L["The Cape of Stranglethorn"],
 		QAchievementId = 4905,
 	},
+	[678] = {
+		BaseMap = 545,
+	},
+	[679] = {
+		BaseMap = 545,
+	},
 	[681] = {
 		BaseMap = 544,
 	},
 	[682] = {
 		BaseMap = 544,
+	},
+	[683] = {
+		BaseMap = 606,
 	},
 	[684] = {
 		Scale = 6.2916665039063,
@@ -960,7 +971,7 @@ Map.MapWorldInfo = {
 		Name = L["The Battle for Gilneas"],
 		Scale = 2.6041665649414,
 		X = -14500,
-		X = 2000,
+		Y = 2000,
 		Short = "TBG",
 	},
 	[737] = {
@@ -974,10 +985,16 @@ Map.MapWorldInfo = {
 		City = true,
 		Explored = true,
 	},
+	[748] = {
+		BaseMap = 720,
+	},
 	[751] = {
 		Scale = 26,
 		X = -311.25,
 		Y = -274.16665039063,
+	},
+	[770] = {
+	  BaseMap = 770,
 	},
 	[772] = {
 		Scale = 8.0999996643066,
@@ -996,7 +1013,7 @@ Map.MapWorldInfo = {
 		UseAId = true,
 		Explored = true,
 	},
-    [806] = {
+	[806] = {
 		Scale = 13.966666015625,
 		X = -290.4166015625,
 		Y = -730.4166015625,
@@ -1043,19 +1060,23 @@ Map.MapWorldInfo = {
 		Overlay = "valeofeternalblossoms",
 		Name=L["Vale of Eternal Blossoms"],
 	},
-    [823] = {
+	[813] = {
+		BaseMap = 482,
+		Short = "EOS",
+	},
+	[823] = {
 		Scale = 3.716666015625,
 		X = -1453.7499023437,
 		Y = 664.58330078125,
 		Overlay = "darkmoonfaireisland",
-	    Name = L["Darkmoon Island"],
+		Name = L["Darkmoon Island"],
 		Explored = true,
 		City = true,
 		MMOutside = true,
 		UseAId=true,
 		MId=823,
 	},
-    [856] = {
+	[856] = {
 		Name = L["Temple of Kotmogu"],
 		Scale = 1.679166015625,
 		X = -14500,
@@ -1084,7 +1105,7 @@ Map.MapWorldInfo = {
 		Short = "SSM",
 		MapBaseName = "STVDiamondMineBG1_",
 	},
-    [862] = {
+	[862] = {
 		Scale = 31.030600585937,
 		X = -1750.5720703125,
 		Y = -1335.83203125,
@@ -1182,7 +1203,7 @@ Map.MapWorldInfo = {
 		Name = L["New Tinkertown"],
 		StartZone = true,
 	},
-    [903] = {
+	[903] = {
 		Name = L["Shrine of Two Moons"],
 		Scale = 0.5,
 		X = -217.8,
@@ -1288,31 +1309,54 @@ Map.MapWorldInfo = {
 		Scale = 1.36666796875,
 		X = -109.166796875,
 		Y = -418.3333984375,
-		Overlay = "garrisonsmvalliance",
+		Garrison = true,
+		City = true,
+		MMOutside = true,
+		Explored = true,
+		MapBaseName = "garrisonsmvalliance_tier",
+		Overlay = "garrisonsmvalliance_tier1",
 	},
 	[976] = {
 		Scale = 1.404166015625,
 		X = -977.083203125,
 		Y = -1162.9166015625,
-		Overlay = "garrisonffhorde",
+		Garrison = true,
+		City = true,
+		MMOutside = true,
+		Explored = true,
+		MapBaseName = "garrisonffhorde_tier",
+		Overlay = "garrisonffhorde_tier1",
 	},
 	[978] = {
 		Scale = 6.2458203125,
 		X = 534.583984375,
 		Y = -1115.416015625,
+		Explored = true,
 		Overlay = "ashran",
 	},
 	[1009] = {
 		Scale = 1.375,
 		X = 725,
 		Y = -781.6666015625,
+		Explored = true,
+		City = true,
 		Overlay = "ashranalliancefactionhub",
 	},
+	[1010] = {
+		Name = L["Tarren Mills vs Southshore"],
+		Scale = 4.337498046875,
+		X = -13000,
+		Y = 1000,
+		MapBaseName = "HillsbradFoothillsBG",
+		Short = "TvS",
+	},
 	[1011] = {
-		 Scale = 1.6,
-		 X = 717.916796875,
-		 Y = -1108.333203125,
-		 Overlay = "ashranhordefactionhub",
+		Scale = 1.6,
+		X = 717.916796875,
+		Y = -1108.333203125,
+		Explored = true,
+		City = true,
+		Overlay = "ashranhordefactionhub",
 	},
 	[9005] = {		-- Blade's Edge Arena
 		Name = L["Blade's Edge Arena"],
@@ -1354,7 +1398,7 @@ Map.MapWorldInfo = {
 
 --------
 
-Map.InstanceInfo = {			-- Blizzard instance maps (SetInstanceMap uses size of 3 for table entries)
+Map.InstanceInfo = {		-- Blizzard instance maps (SetInstanceMap uses size of 3 for table entries)
 }
 
 Map.ZoneOverlays = {
@@ -2436,7 +2480,7 @@ Map.ZoneOverlays = {
 		["lakewintergrasp"] = "0,0,1024,768",
 	},
 	["dalaran"] = {
-		["dalaran1_"] = "0,0,1024,768",	-- FIX!!
+		["dalaran1_"] = "0,0,1024,768",		-- FIX!!
 	},
 
 	["boreantundra"] = {
@@ -2605,14 +2649,14 @@ Map.ZoneOverlays = {
 
 	-- Cataclysm
 	["tolbarad"] = {
-		["tolbarad"] = "0,0,1024,768",	-- Manual
+		["tolbarad"] = "0,0,1024,768",			-- Manual
 	},
 	["tolbaraddailyarea"] = {
-		["tolbaraddailyarea"] = "0,0,1024,768",	-- Manual
+		["tolbaraddailyarea"] = "0,0,1024,768",		-- Manual
 	},
 
 	["themaelstrom"] = {
-		["themaelstrom"] = "0,0,1024,768",	-- Manual
+		["themaelstrom"] = "0,0,1024,768",		-- Manual
 	},
 	["thelostisles_terrain2"] = {
 		["gallywixdocks"] = "351,21,173,180",
@@ -2661,7 +2705,7 @@ Map.ZoneOverlays = {
 	},
 
 	["moltenfront"] = {
-		["moltenfront"] = "0,0,1024,768",	-- Manual
+		["moltenfront"] = "0,0,1024,768",		-- Manual
 	},
 	-- Pandaria
 	["thejadeforest"] = {
@@ -2820,7 +2864,7 @@ Map.ZoneOverlays = {
 	},
 
 	["isleofgiants"] = {
-		["isleofgiants"] = "0,0,1024,768",	-- Manual
+		["isleofgiants"] = "0,0,1024,768",		-- Manual
 	},
 	["timelessisle"] = {
 		["timelessisle"] = "0,0,1024,768",
@@ -2830,131 +2874,131 @@ Map.ZoneOverlays = {
 		["dynamic"] = "0,0,0,0",
 	},
 
--- Draenor
+	-- Draenor
 
-	["ashranhordefactionhub"] = {  --1011
+	["ashranhordefactionhub"] = {		-- 1011
 		["ashranhordefactionhub"] = "0,0,1024,768",
 	},
-	["ashranalliancefactionhub"] = { -- 1009
+	["ashranalliancefactionhub"] = {	-- 1009
 		["ashranalliancefactionhub"] = "0,0,1024,768",
 	},
-	["ashran"] = { -- 978
+	["ashran"] = {				-- 978
 		["ashran"] = "0,0,1024,768",
 	},
-	["frostfireridge"] = { -- 941
-		["BLADESPIREFORTRESS"] = "38,117,356,303",
-		["BLOODMAULSTRONGHOLD"] = "311,4,258,217",
-		["BONESOFAGURAK"] = "729,319,273,349",
-		["DAGGERMAWRAVINE"] = "284,91,255,191",
-		["FROSTWINDDUNES"] = "121,0,274,214",
-		["GRIMFROSTHILL"] = "597,210,178,203",
-		["GROMBOLASH"] = "483,33,217,239",
-		["GROMGAR"] = "505,323,282,341",
-		["HORDEGARRISON"] = "336,327,267,257",
-		["IRONSIEGEWORKS"] = "673,156,329,294",
-		["IRONWAYSTATION"] = "641,304,199,335",
-		["MAGNAROK"] = "609,33,213,278",
-		["NOGARRISON"] = "336,327,267,257",
-		["STONEFANGOUTPOST"] = "306,281,251,191",
-		["THEBONESLAG"] = "290,192,256,210",
-		["THECRACKLINGPLAINS"] = "439,137,266,293",
-		["WORGOL"] = "72,292,317,233",
+	["frostfireridge"] = {			-- 941
+		["bladespirefortress"] = "38,117,356,303",
+		["bloodmaulstronghold"] = "311,4,258,217",
+		["bonesofagurak"] = "729,319,273,349",
+		["daggermawravine"] = "284,91,255,191",
+		["frostwinddunes"] = "121,0,274,214",
+		["grimfrosthill"] = "597,210,178,203",
+		["grombolash"] = "483,33,217,239",
+		["gromgar"] = "505,323,282,341",
+		["hordegarrison"] = "336,327,267,257",
+		["ironsiegeworks"] = "673,156,329,294",
+		["ironwaystation"] = "641,304,199,335",
+		["magnarok"] = "609,33,213,278",
+		["nogarrison"] = "336,327,267,257",
+		["stonefangoutpost"] = "306,281,251,191",
+		["theboneslag"] = "290,192,256,210",
+		["thecracklingplains"] = "439,137,266,293",
+		["worgol"] = "72,292,317,233",
 	},
-	["garrisonffhorde"] = { -- 976
-		["garrisonffhorde"] = "0,0,1024,768",
+	["garrisonffhorde_tier1"] = {		-- 976
+		["garrisonffhorde_tier1"] = "0,0,1024,768",
 	},
-	["garrisonsmvalliance"] = { -- 971
-		["garrisonsmvalliance"] = "0,0,1024,768",
+	["garrisonsmvalliance_tier1"] = {	-- 971
+		["garrisonsmvalliance_tier1"] = "0,0,1024,768",
 	},
-	["gorgrond"] = { -- 949
-		["BASTIONRISE"] = "283,507,324,161",
-		["BEASTWATCH"] = "383,371,166,161",
-		["EASTERNRUIN"] = "525,260,210,193",
-		["EVERMORN"] = "281,444,297,181",
-		["FOUNDRY"] = "455,74,211,221",
-		["FOUNDRYSOUTH"] = "454,183,217,180",
-		["GRONNCANYON"] = "258,213,279,241",
-		["HIGHLANDPASS"] = "547,73,285,323",
-		["HIGHPASS"] = "411,250,209,225",
-		["IRONDOCKS"] = "350,0,315,180",
-		["MUSHROOMS"] = "444,323,253,198",
-		["STONEMAULARENA"] = "259,335,217,178",
-		["STONEMAULSOUTH"] = "275,416,208,142",
-		["STRIPMINE"] = "312,77,250,232",
-		["TANGLEHEART"] = "451,372,262,221",
+	["gorgrond"] = {			-- 949
+		["bastionrise"] = "283,507,324,161",
+		["beastwatch"] = "383,371,166,161",
+		["easternruin"] = "525,260,210,193",
+		["evermorn"] = "281,444,297,181",
+		["foundry"] = "455,74,211,221",
+		["foundrysouth"] = "454,183,217,180",
+		["gronncanyon"] = "258,213,279,241",
+		["highlandpass"] = "547,73,285,323",
+		["highpass"] = "411,250,209,225",
+		["irondocks"] = "350,0,315,180",
+		["mushrooms"] = "444,323,253,198",
+		["stonemaularena"] = "259,335,217,178",
+		["stonemaulsouth"] = "275,416,208,142",
+		["stripmine"] = "312,77,250,232",
+		["tangleheart"] = "451,372,262,221",
 	},
-	["nagranddraenor"] = { -- 950
-		["ANCESTRAL"] = "239,259,234,191",
-		["BROKENPRECIPICE"] = "256,12,305,227",
-		["ELEMENTALS"] = "588,0,286,274",
-		["GROMMASHAR"] = "600,367,256,301",
-		["HALLVALOR"] = "766,118,236,372",
-		["HIGHMAUL"] = "0,0,471,437",
-		["IRONFISTHARBOR"] = "283,354,236,242",
-		["LOKRATH"] = "382,187,316,221",
-		["MARGOKS"] = "753,380,249,288",
-		["MUSHROOMS"] = "746,25,250,287",
-		["OSHUGUN"] = "366,323,262,266",
-		["RINGOFBLOOD"] = "430,0,263,287",
-		["RINGOFTRIALS"] = "523,159,354,315",
-		["SUNSPRINGWATCH"] = "312,98,274,254",
-		["TELAAR"] = "461,353,296,272",
+	["nagranddraenor"] = {			-- 950
+		["ancestral"] = "239,259,234,191",
+		["brokenprecipice"] = "256,12,305,227",
+		["elementals"] = "588,0,286,274",
+		["grommashar"] = "600,367,256,301",
+		["hallvalor"] = "766,118,236,372",
+		["highmaul"] = "0,0,471,437",
+		["ironfistharbor"] = "283,354,236,242",
+		["lokrath"] = "382,187,316,221",
+		["margoks"] = "753,380,249,288",
+		["mushrooms"] = "746,25,250,287",
+		["oshugun"] = "366,323,262,266",
+		["ringofblood"] = "430,0,263,287",
+		["ringoftrials"] = "523,159,354,315",
+		["sunspringwatch"] = "312,98,274,254",
+		["telaar"] = "461,353,296,272",
 	},
-	["spiresofarak"] = { -- 948
-		["BLOODBLADEREDOUBT"] = "334,210,209,154",
-		["BLOODMANEVALLEY"] = "410,350,229,246",
-		["CENTERRAVENNEST"] = "444,255,188,190",
-		["CLUTCHPOP"] = "533,382,217,224",
-		["EASTMUSHROOMS"] = "649,155,182,244",
-		["EMPTYGARRISON"] = "282,261,190,187",
-		["HOWLINGCRAG"] = "459,0,382,274",
-		["NWCORNER"] = "102,0,314,304",
-		["SETHEKKHOLLOW"] = "520,127,238,295",
-		["SKETTIS"] = "289,0,371,174",
-		["SOLOSPIRENORTH"] = "429,84,196,284",
-		["SOLOSPIRESOUTH"] = "374,276,169,178",
-		["SOUTHPORT"] = "310,328,197,179",
-		["VEILAKRAZ"] = "281,83,252,230",
-		["VEILZEKK"] = "521,268,198,232",
-		["VENTURECOVE"] = "465,475,226,193",
-		["WRITHINGMIRE"] = "197,198,229,213",
+	["spiresofarak"] = {			-- 948
+		["bloodbladeredoubt"] = "334,210,209,154",
+		["bloodmanevalley"] = "410,350,229,246",
+		["centerravennest"] = "444,255,188,190",
+		["clutchpop"] = "533,382,217,224",
+		["eastmushrooms"] = "649,155,182,244",
+		["emptygarrison"] = "282,261,190,187",
+		["howlingcrag"] = "459,0,382,274",
+		["nwcorner"] = "102,0,314,304",
+		["sethekkhollow"] = "520,127,238,295",
+		["skettis"] = "289,0,371,174",
+		["solospirenorth"] = "429,84,196,284",
+		["solospiresouth"] = "374,276,169,178",
+		["southport"] = "310,328,197,179",
+		["veilakraz"] = "281,83,252,230",
+		["veilzekk"] = "521,268,198,232",
+		["venturecove"] = "465,475,226,193",
+		["writhingmire"] = "197,198,229,213",
 	},
-	["shadowmoonvalleydr"] = { -- 947
-		["ANGUISHFORTRESS"] = "140,160,309,264",
-		["DARKTIDEROOST"] = "468,467,282,201",
-		["ELODOR"] = "426,0,291,266",
-		["EMBAARI"] = "270,158,346,252",
-		["GARRISON"] = "194,0,223,279",
-		["GLOOMSHADE"] = "319,5,229,240",
-		["GULVAR"] = "26,0,260,309",
-		["KARABOR"] = "537,150,393,318",
-		["NOGARRISON"] = "194,0,223,279",
-		["SHAZGUL"] = "259,315,282,225",
-		["SHIMMERINGMOOR"] = "453,306,288,261",
-		["SOCRETHAR"] = "383,411,202,201",
-		["SWISLAND"] = "309,460,173,160",
+	["shadowmoonvalleydr"] = {		-- 947
+		["anguishfortress"] = "140,160,309,264",
+		["darktideroost"] = "468,467,282,201",
+		["elodor"] = "426,0,291,266",
+		["embaari"] = "270,158,346,252",
+		["garrison"] = "194,0,223,279",
+		["gloomshade"] = "319,5,229,240",
+		["gulvar"] = "26,0,260,309",
+		["karabor"] = "537,150,393,318",
+		["nogarrison"] = "194,0,223,279",
+		["shazgul"] = "259,315,282,225",
+		["shimmeringmoor"] = "453,306,288,261",
+		["socrethar"] = "383,411,202,201",
+		["swisland"] = "309,460,173,160",
 	},
-	["talador"] = { -- 946
-		["ARUUNA"] = "597,178,389,234",
-		["AUCHINDOUN"] = "338,356,309,262",
-		["CENTERISLES"] = "546,228,252,280",
-		["COURTOFSOULS"] = "150,264,307,229",
-		["FORTWRYNN"] = "567,42,292,235",
-		["GORDALFORTRESS"] = "548,378,423,290",
-		["GULROK"] = "165,364,278,270",
-		["NORTHGATE"] = "571,0,398,149",
-		["ORUNAICOAST"] = "427,0,279,267",
-		["SEENTRANCE"] = "685,298,308,276",
-		["SHATTRATH"] = "173,22,406,367",
-		["TELMOR"] = "207,511,497,157",
-		["TOMBOFLIGHTS"] = "352,271,326,212",
-		["TUUREM"] = "472,148,225,224",
-		["ZANGARRA"] = "713,35,287,277",
+	["talador"] = {				-- 946
+		["aruuna"] = "597,178,389,234",
+		["auchindoun"] = "338,356,309,262",
+		["centerisles"] = "546,228,252,280",
+		["courtofsouls"] = "150,264,307,229",
+		["fortwrynn"] = "567,42,292,235",
+		["gordalfortress"] = "548,378,423,290",
+		["gulrok"] = "165,364,278,270",
+		["northgate"] = "571,0,398,149",
+		["orunaicoast"] = "427,0,279,267",
+		["seentrance"] = "685,298,308,276",
+		["shattrath"] = "173,22,406,367",
+		["telmor"] = "207,511,497,157",
+		["tomboflights"] = "352,271,326,212",
+		["tuurem"] = "472,148,225,224",
+		["zangarra"] = "713,35,287,277",
 	},
-	["tanaanjungle"] = { -- 945
+	["tanaanjungle"] = {			-- 945
 		["tanaanjungle"] = "0,0,1024,768",
 	},
-	["tanaanjungleintro"] = {	-- 970
+	["tanaanjungleintro"] = {		-- 970
 		["tanaanjungleintro"] = "0,0,1024,768",
 	},
 }
@@ -7468,7 +7512,7 @@ Map.MiniMapBlks = {
 		Map.MapWorldInfo[795].X + Map.MapInfo[1].X + 3152.92266259766, Map.MapWorldInfo[795].Y + Map.MapInfo[1].Y + -2105.97034960937,
 		"World\\Minimaps\\FirelandsDailies"
 	},
-	[640] = {	-- 2625 to 3534
+	[640] = {		-- 2625 to 3534
 		Map.DeepholmMapBlks,
 		2625,
 		26, 25,
@@ -7482,8 +7526,8 @@ Map.MiniMapBlks = {
 		Map.MapWorldInfo[751].X + Map.MapInfo[5].X + 297.05, Map.MapWorldInfo[751].Y + Map.MapInfo[5].Y + -1411.53334960937,
 		"World\\Minimaps\\LostIsles"
 	},
-    [808] = {
-	     Map.TheWanderingIsleMapBlks,
+	[808] = {
+		Map.TheWanderingIsleMapBlks,
 		 2328,
 		 23,28,
 		 Map.MapWorldInfo[808].X + Map.MapWorldInfo[808].XOff + Map.MapInfo[6].X  + 35.7, Map.MapWorldInfo[808].Y + Map.MapWorldInfo[808].YOff + Map.MapInfo[6].Y-69.55,
@@ -7516,7 +7560,7 @@ function Nx.Map:GetMiniInfo (mapId)
 			return
 		end
 
-		if id == 9 then	-- BGs?
+		if id == 9 then		-- BGs?
 			return
 		end
 
@@ -7528,7 +7572,7 @@ function Nx.Map:GetMiniInfo (mapId)
 
 	local t = self.MiniMapBlks[id]
 
-	if not t then		-- "Isle of Quel'Danas"??
+	if not t then			-- "Isle of Quel'Danas"??
 
 --		if NxData.DebugMap then
 --			Nx.prt ("GetMiniInfo: missing %s", id)
@@ -7585,11 +7629,11 @@ function Nx.Map:GetMiniBlkName (miniT, x, y)
 end
 
 Map.MapLevels={
-    [811] = { [3] = 6010, [4] = 6011, },
-    [903] = { [1] = 6012, [2] = 6013, },
-    [905] = { [3] = 6010, [4] = 6011, },
-    [504] = { [2] = 4014, },
-    [321] = { [2] = 1034, },
+	[811] = { [3] = 6010, [4] = 6011, },
+	[903] = { [1] = 6012, [2] = 6013, },
+	[905] = { [3] = 6010, [4] = 6011, },
+	[504] = { [2] = 4014, },
+	[321] = { [2] = 1034, },
 }
 --[[
 function Nx.Map:ConvertMapData()
@@ -7617,7 +7661,7 @@ function Nx.Map:ConvertMapData()
 
 --			local name, minLvl, maxLvl, faction, cont = strsplit ("|", Nx.Zones[nxid])
 
---			if faction ~= "3" then	-- Not instance
+--			if faction ~= "3" then		-- Not instance
 
 				ay1 = tonumber (ay1)
 				ay2 = tonumber (ay2)
@@ -7630,8 +7674,8 @@ function Nx.Map:ConvertMapData()
 					local t = {}
 					areas[nxid] = t
 					t[1] = scale
-					t[2] = -ay1 / 5						-- X
-					t[3] = -ax1 / 5						-- Y
+					t[2] = -ay1 / 5		-- X
+					t[3] = -ax1 / 5		-- Y
 					t[4] = aname
 					Nx.prt("%s %s %s %s",t[4],t[2],t[3],t[1])
 				end
@@ -7639,8 +7683,8 @@ function Nx.Map:ConvertMapData()
 		end
 
 --		if map == 0 or map == 1 then
---		if map == 648 or map == 646 or map == 730 then			-- Maelstrom
---		if map == 654 then	-- Gilneas
+--		if map == 648 or map == 646 or map == 730 then		-- Maelstrom
+--		if map == 654 then					-- Gilneas
 --		if map == 571 or map == 609 then			-- Northrend, DK start
 		if map == 1064 or map == 870 then
 --			Nx.prt ("%s %s %s", aid, map, aname)
@@ -7661,7 +7705,7 @@ function Nx.Map:ConvertMapData()
 				end
 			end
 
-			if next (area) then	-- Not empty?
+			if next (area) then				-- Not empty?
 				data[aname] = area
 			end
 		end
@@ -7669,4 +7713,4 @@ function Nx.Map:ConvertMapData()
 end
 ]]--
 -------------------------------------------------------------------------------
---EOF
+-- EOF
